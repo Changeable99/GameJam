@@ -1,15 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://5irqrr4c72aw"]
 
-[ext_resource type="PackedScene" uid="uid://dm3een2yq83cj" path="res://Imports/default_cube.glb" id="1_7h0kd"]
+[ext_resource type="ArrayMesh" uid="uid://bs68uj6qs3i6g" path="res://Imports/default_cube_Cube_001.res" id="1_7h0kd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7h0kd"]
 
 [node name="Tiles" type="Node3D"]
 
-[node name="default_cube" parent="." instance=ExtResource("1_7h0kd")]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.00234663, 0, 0.00194478)
+mesh = ExtResource("1_7h0kd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00440049, 9.82285e-05, -0.00827169)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="default_cube"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="default_cube/RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00717115, -1.78814e-07, 0.010793)
 shape = SubResource("BoxShape3D_7h0kd")
