@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl5ct5k6k5uyo"]
+
+[ext_resource type="Script" uid="uid://us06c60j40wf" path="res://button_smash.gd" id="1_vxy26"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_c38j1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6ljle"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tpqm4"]
+
+[node name="ButtonSmash" type="Node3D"]
+script = ExtResource("1_vxy26")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_c38j1")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("SphereShape3D_6ljle")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_tpqm4")
