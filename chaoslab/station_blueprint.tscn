@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck0wrrdx4m4a2"]
+
+[ext_resource type="Script" uid="uid://ca5ab0csptgjf" path="res://station_blueprint.gd" id="1_7smst"]
+[ext_resource type="ArrayMesh" uid="uid://cos4lby5ishyc" path="res://Imports/default_cube_Cube_001.res" id="1_cgtpb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7smst"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k6kki"]
+size = Vector3(0.95, 0.5, 0.95)
+
+[node name="StationBlueprint" type="Node3D"]
+script = ExtResource("1_7smst")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = ExtResource("1_cgtpb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_7smst")
+
+[node name="InteractionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_k6kki")
+
+[node name="InteractionLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25762, 0)
+text = "Interact \"E\""
+font_size = 128
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
