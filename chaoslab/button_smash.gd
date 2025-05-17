@@ -1,33 +1,32 @@
 extends "res://station_blueprint.gd"
 
 var progress := 0
-var targetProgress := 50   # Wie oft muss gedrückt werden?
+var targetProgress := 40   # Wie oft muss gedrückt werden?
 var lastKey := ""          # Damit A und D abwechselnd gedrückt werden müssen
 var minigameIsActive : bool = false
 
 func trigger_station_minigame():
 	super.trigger_station_minigame()
 	minigameIsActive = true
-	print("klappt")
-	
 	
 func _input(event):
 	if not minigameIsActive:
 		return
 		
 	if event.is_action_pressed("Input_A"):
-		if lastKey != "a":
+		if lastKey != "A":
 			progress += 1
-			lastKey = "a"
+			lastKey = "A"
 			print("A gedrückt! Fortschritt: ", progress)
 	elif event.is_action_pressed("Input_D"):
-		if lastKey != "d":
+		if lastKey != "D":
 			progress += 1
-			lastKey = "d"
+			lastKey = "D"
 			print("D gedrückt! Fortschritt: ", progress)
+	
+	# minigame completed
 	if progress >= targetProgress:
-		print("Minispiel gewonnen!")
-		# Hier kannst du z.B. ein Signal senden oder das Minispiel beenden
+		super.minigame_finished(true)
 #wenn aktiv, dann player movment stoppen
 #das es endet wenn ziel erreicht
 #wenn ziel erreicht, bar füllen/ui dies das

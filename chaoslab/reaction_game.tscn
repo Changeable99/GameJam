@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtphc4esvkrwt"]
+[gd_scene load_steps=6 format=3 uid="uid://0ypwojm1karh"]
 
 [ext_resource type="PackedScene" uid="uid://ck0wrrdx4m4a2" path="res://station_blueprint.tscn" id="1_c3a7i"]
+[ext_resource type="ArrayMesh" uid="uid://bvlmxpjuex5c1" path="res://Imports/UFO_Sphere_006.res" id="2_6l7nq"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6l7nq"]
 viewport_path = NodePath("SubViewport")
@@ -16,6 +17,13 @@ material = SubResource("StandardMaterial3D_vjxft")
 size = Vector2(2, 0.5)
 
 [node name="ReactionGame" instance=ExtResource("1_c3a7i")]
+
+[node name="StaticBody3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00107193, 0.00770235, -0.00371265)
+
+[node name="MeshInstance3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = ExtResource("2_6l7nq")
 
 [node name="ProgressBarMesh" parent="." index="6"]
 mesh = SubResource("QuadMesh_gmtwx")
