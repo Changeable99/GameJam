@@ -1,0 +1,103 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8bsp0avpyw5k"]
+
+[ext_resource type="Texture2D" uid="uid://c7l7y4io18k3u" path="res://dogecoin_placeholder.png" id="1_m2lub"]
+[ext_resource type="Script" uid="uid://dc6d62uiqrsws" path="res://start_game_button.gd" id="2_2p34a"]
+[ext_resource type="Script" uid="uid://qxjlnkrbs0x" path="res://exit_game_button.gd" id="3_j5qoq"]
+[ext_resource type="Script" uid="uid://cmdcdoxb07w8n" path="res://scoreboard_button.gd" id="3_oft6u"]
+[ext_resource type="Script" uid="uid://cus17xxe5eqoj" path="res://exit_button.gd" id="5_0d135"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu_box" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -90.0
+offset_right = 48.5
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Game_image" type="TextureRect" parent="CanvasLayer/MainMenu_box"]
+layout_mode = 2
+texture = ExtResource("1_m2lub")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu_box/Game_image"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 64
+text = "ChaosLab"
+
+[node name="StartGame_button" type="Button" parent="CanvasLayer/MainMenu_box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Start Game"
+script = ExtResource("2_2p34a")
+
+[node name="Scoreboard_button" type="Button" parent="CanvasLayer/MainMenu_box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Scoreboard"
+script = ExtResource("3_oft6u")
+
+[node name="ExitGame_button" type="Button" parent="CanvasLayer/MainMenu_box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Exit Game"
+script = ExtResource("3_j5qoq")
+
+[node name="Scoreboard_box" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -246.5
+offset_right = 246.5
+offset_bottom = 145.0
+grow_horizontal = 2
+
+[node name="Scoreboard_label" type="Label" parent="CanvasLayer/Scoreboard_box"]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 64
+text = "ScoreBoard"
+horizontal_alignment = 1
+
+[node name="Score_box" type="VBoxContainer" parent="CanvasLayer/Scoreboard_box"]
+layout_mode = 2
+
+[node name="Score_label" type="Label" parent="CanvasLayer/Scoreboard_box/Score_box"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Player 1: 00:50"
+horizontal_alignment = 1
+
+[node name="Exit_button" type="Button" parent="CanvasLayer/Scoreboard_box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Exit Scoreboard"
+script = ExtResource("5_0d135")
