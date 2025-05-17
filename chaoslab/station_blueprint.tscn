@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://ck0wrrdx4m4a2"]
 
 [ext_resource type="Script" uid="uid://ca5ab0csptgjf" path="res://station_blueprint.gd" id="1_7smst"]
-[ext_resource type="ArrayMesh" uid="uid://csyt8s08p6t4a" path="res://Imports/default_interact_Cube_002.res" id="2_7smst"]
+[ext_resource type="ArrayMesh" uid="uid://c5u1wkypnuknt" path="res://Imports/default_interact_Cube_002.res" id="2_7smst"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7smst"]
 
@@ -25,6 +25,7 @@ size = Vector2(2, 0.5)
 bg_color = Color(0.239216, 0.239216, 0.239216, 0.823529)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6kki"]
+bg_color = Color(0.6, 0.6, 1, 1)
 
 [node name="StationBlueprint" type="Node3D"]
 script = ExtResource("1_7smst")
