@@ -5,8 +5,8 @@ var targetProgress := 50   # Wie oft muss gedrückt werden?
 var lastKey := ""          # Damit A und D abwechselnd gedrückt werden müssen
 var minigameIsActive : bool = false
 
-func trigger_station_event():
-	super.trigger_station_event()
+func trigger_station_minigame():
+	super.trigger_station_minigame()
 	minigameIsActive = true
 	print("klappt")
 	
