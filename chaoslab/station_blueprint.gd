@@ -3,8 +3,10 @@ extends Node3D
 @onready var interactionLabel : Label3D = $InteractionLabel
 @onready var timeToSolveTimer : Timer = $TimeToSolveTimer
 @onready var chaosTickTimer : Timer = $ChaosTickTimer
-@onready var timerBar : ProgressBar = $TimerBar
+@onready var minigameDurationTimer : Timer = $MinigameDurationTimer
+@onready var timerBar : ProgressBar = $SubViewport/TimerBar
 
+var styleBoxFill : StyleBoxFlat
 var isInteractable : bool = false
 
 @export var timeToSolve : float = 10.0
@@ -19,10 +21,15 @@ var maxChaosChangePerSec : int = 50
 
 func _ready() -> void:
 	interactionLabel.visible = false
+	
 	timeToSolveTimer.wait_time = timeToSolve
 	timeToSolveTimer.start()
-	timerBar.modulate = Color.YELLOW
-
+	
+	minigameDurationTimer.wait_time = minigameDuration
+	
+	# progress bar initiatlization
+	styleBoxFill = timerBar.get_theme_stylebox("fill")
+	styleBoxFill.bg_color = Color.YELLOW
 
 func _process(delta: float) -> void:
 	# manage Timer
@@ -37,8 +44,10 @@ func _process(delta: float) -> void:
 		var ratio = clamp(timeToSolveTimer.time_left / timeToSolveTimer.wait_time, 0, 1)
 		timerBar.value = ratio * 100
 
-		if ratio < 0.5 && timerBar.modulate == Color.YELLOW:
-			timerBar.modulate = Color.RED
+		if ratio < 0.5 && styleBoxFill.bg_color == Color.YELLOW:
+			var styleBoxFill : StyleBoxFlat = timerBar.get_theme_stylebox("fill")
+			styleBoxFill.bg_color = Color.RED
+			timerBar.add_theme_color_override("font_color", Color(Color.GHOST_WHITE))
 			
 		# manage chaos increase at half time
 		if halfTimeLeft:
@@ -59,33 +68,38 @@ func _on_interaction_area_body_entered(body: Node3D) -> void:
 		interactionLabel.visible = true
 		isInteractable = true
 
-
 func _on_interaction_area_body_exited(body: Node3D) -> void:
 	if body is CharacterBody3D:
 		print("Player left  interaction area of object: " + name)
 		interactionLabel.visible = false
 		isInteractable = false
 
-
 func trigger_station_minigame() -> void:
 	print("Station event triggered")
 	interactionLabel.visible = false
 	isInteractable = false
 	timeToSolveTimer.stop()
+	minigameDurationTimer.start()
 	Global.gameState = Global.GameState.MINIGAME
-
 
 func minigame_finished(completed : bool) -> void:
 	if completed:
 		print("Minigame completed!")
-		Global.change_chaos(-chaosChangeByFinish)
+		Global._change_chaos(-chaosChangeByFinish)
 	else:
 		print("Minigame failed!")
-		Global.change_chaos(chaosChangeByFinish)
+		Global._change_chaos(chaosChangeByFinish)
 	
 	Global.gameState = Global.GameState.DEFAULT
 	queue_free()
 
-
 func _on_chaos_tick_timer_timeout() -> void:
 	Global._change_chaos(chaosChangePerSec)
+
+func _on_time_to_solve_timer_timeout() -> void:
+	print("too slow")
+	#minigame_finished(false)
+	
+func _on_minigame_duration_timer_timeout() -> void:
+	print("minigame not finished in time")
+	minigame_finished(false)
