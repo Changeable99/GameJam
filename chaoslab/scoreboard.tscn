@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4j048wfiq14p"]
+
+[ext_resource type="Script" uid="uid://cus17xxe5eqoj" path="res://exit_button.gd" id="1_jeshg"]
+
+[node name="Scoreboard_box" type="VBoxContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -246.5
+offset_right = 246.5
+offset_bottom = 145.0
+grow_horizontal = 2
+
+[node name="Scoreboard_label" type="Label" parent="."]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 64
+text = "ScoreBoard"
+horizontal_alignment = 1
+
+[node name="Score_box" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Scoreboard_label" type="Label" parent="Score_box"]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 64
+text = "Player: 00:00"
+horizontal_alignment = 1
+
+[node name="Exit_button" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Exit Scoreboard"
+script = ExtResource("1_jeshg")

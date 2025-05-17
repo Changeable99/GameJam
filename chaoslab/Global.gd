@@ -47,7 +47,10 @@ func _calculate_time(delta) -> void:
 	displayTime = "%02d:%02d" % [minutes, seconds]
 	
 func _end_game():
-	print("GAME OVER")
+	var gameOverWindow = get_tree().current_scene.get_node("HUD/CanvasLayer/GAMEOVERWindow")
+	gameOverWindow.show()
+	get_tree().paused = true
+	game_started = false
 	
 func _calculate_income() -> void :
 	var maxChaos = 500

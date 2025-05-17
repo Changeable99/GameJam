@@ -1,5 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cwwjqpbhoy278"]
 
+[ext_resource type="Script" uid="uid://d02ypxcg5vi6g" path="res://main.gd" id="1_272bh"]
 [ext_resource type="PackedScene" uid="uid://d2xpqhe1522tx" path="res://beginner_level.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bkddv5iicpqk" path="res://player_character.tscn" id="2_0xm2m"]
 [ext_resource type="AudioStream" uid="uid://cs0fmjbea013o" path="res://Imports/ingame-background.mp3" id="5_7mycd"]
@@ -44,8 +45,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.53181, 1.01575, -0.76964)
 transform = Transform3D(-0.534516, 0.801351, -0.26857, -0.291528, 0.123453, 0.948563, 0.793288, 0.585317, 0.167628, 2.99075, 8.14934, -4.34881)
 shadow_enabled = true
 
-[node name="Control" parent="." instance=ExtResource("5_lquwl")]
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642787, 0, -0.642787, 0.766044, 0, 5, 8.5)
 environment = SubResource("Environment_272bh")
@@ -55,6 +54,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.61951, 0)
 shadow_enabled = true
 omni_range = 20.2277
 
+[node name="StationBlueprint" parent="." instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.490828, 0.500158, 2.48057)
+
+[node name="HUD" parent="." instance=ExtResource("5_lquwl")]
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_7mycd")
 autoplay = true
