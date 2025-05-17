@@ -23,18 +23,22 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# manage Timer
-	if !halfTimeLeft:
-		halfTimeLeft = timeToSolveTimer.time_left < (timeToSolveTimer.wait_time / 2)
+	if !timeToSolveTimer.is_stopped():
+		if !halfTimeLeft:
+			halfTimeLeft = timeToSolveTimer.time_left < (timeToSolveTimer.wait_time / 2)
 		
-		if halfTimeLeft:
-			print("half time reached")
+			if halfTimeLeft:
+				print("half time reached")
 	
-	# manage timer bar
-	var ratio = clamp(timeToSolveTimer.time_left / timeToSolveTimer.wait_time, 0, 1)
-	timerBar.value = ratio * 100
+		# manage timer bar
+		var ratio = clamp(timeToSolveTimer.time_left / timeToSolveTimer.wait_time, 0, 1)
+		timerBar.value = ratio * 100
 
-	if ratio < 0.5 && timerBar.modulate == Color.YELLOW:
-		timerBar.modulate = Color.RED
+		if ratio < 0.5 && timerBar.modulate == Color.YELLOW:
+			timerBar.modulate = Color.RED
+	else:
+		pass
+		#print("timer stopped")
 	
 	# manage interaction
 	if isInteractable && Input.is_action_just_pressed("Interact_E") && Global.gameState == Global.GameState.DEFAULT:
