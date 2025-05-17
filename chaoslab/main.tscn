@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://main.gd" id="1_272bh"]
 [ext_resource type="PackedScene" uid="uid://d2xpqhe1522tx" path="res://beginner_level.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bkddv5iicpqk" path="res://player_character.tscn" id="2_0xm2m"]
-[ext_resource type="Script" uid="uid://bm0ivw630ko4o" path="res://button_smash.gd" id="2_lquwl"]
-[ext_resource type="PackedScene" uid="uid://ck0wrrdx4m4a2" path="res://station_blueprint.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dsgo10p2vikos" path="res://HUD.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dtphc4esvkrwt" path="res://reaction_game.tscn" id="7_5vw27"]
+[ext_resource type="Script" uid="uid://vodf70emwk4" path="res://reaction_game.gd" id="8_kek77"]
 
 [sub_resource type="Environment" id="Environment_272bh"]
 background_mode = 1
@@ -23,10 +23,6 @@ fog_density = 1.0
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_272bh")
-
-[node name="ButtonSmash" parent="." instance=ExtResource("4_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.680097, 3.55133)
-script = ExtResource("2_lquwl")
 
 [node name="BeginnerLevel" parent="." instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0293499, 0, -0.00357306)

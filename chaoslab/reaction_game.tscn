@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtphc4esvkrwt"]
+
+[ext_resource type="PackedScene" uid="uid://ck0wrrdx4m4a2" path="res://station_blueprint.tscn" id="1_c3a7i"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6l7nq"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vjxft"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_6l7nq")
+
+[sub_resource type="QuadMesh" id="QuadMesh_gmtwx"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_vjxft")
+size = Vector2(2, 0.5)
+
+[node name="ReactionGame" instance=ExtResource("1_c3a7i")]
+
+[node name="ProgressBarMesh" parent="." index="6"]
+mesh = SubResource("QuadMesh_gmtwx")
