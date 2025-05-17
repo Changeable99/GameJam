@@ -1,7 +1,5 @@
 [gd_scene load_steps=5 format=3 uid="uid://cwwjqpbhoy278"]
 
-[gd_scene load_steps=6 format=3 uid="uid://cwwjqpbhoy278"]
-
 
 [ext_resource type="PackedScene" path="res://beginner_level.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bkddv5iicpqk" path="res://player_character.tscn" id="2_0xm2m"]
@@ -10,7 +8,7 @@
 
 [node name="Main" type="Node3D"]
 
-[node name="ButtonSmash" parent="." instance=ExtResource("4_lquwl")]
+[node name="ButtonSmash" parent="." instance=ExtResource("4_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.680097, 3.55133)
 
 [node name="BeginnerLevel" parent="." instance=ExtResource("1_ig7tw")]
