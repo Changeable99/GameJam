@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsgo10p2vikos"]
+
+[ext_resource type="Texture2D" uid="uid://c7l7y4io18k3u" path="res://dogecoin_placeholder.png" id="1_efote"]
+[ext_resource type="Script" uid="uid://4rensbcf73ha" path="res://time_label.gd" id="1_k5de2"]
+[ext_resource type="Script" uid="uid://ld4o7mjieyao" path="res://money_label.gd" id="2_ne771"]
+[ext_resource type="Script" uid="uid://8hfab55olhwn" path="res://chaos_bar.gd" id="3_vow1y"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="money_box" type="HBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="money_image" type="TextureRect" parent="CanvasLayer/money_box"]
+layout_mode = 2
+texture = ExtResource("1_efote")
+expand_mode = 3
+
+[node name="money_label" type="Label" parent="CanvasLayer/money_box"]
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 32
+text = "100"
+script = ExtResource("2_ne771")
+
+[node name="currency_label" type="Label" parent="CanvasLayer/money_box"]
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 32
+text = "$"
+
+[node name="time_label" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -82.0
+offset_bottom = 45.0
+grow_horizontal = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 32
+text = "00:00"
+script = ExtResource("1_k5de2")
+
+[node name="chaos_bar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -130.0
+offset_right = 300.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1000.0
+value = 500.0
+script = ExtResource("3_vow1y")
