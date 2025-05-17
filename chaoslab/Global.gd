@@ -4,8 +4,7 @@ var currentMoney: int = 1000
 var currentChaos: int = 500
 var currentTime = 0
 var displayTime: String
-
-@onready var playerCharacter = $PlayerCharacter
+var gameState: GameState = GameState.DEFAULT
 
 enum GameState {
 	DEFAULT,

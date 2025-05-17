@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var interactionLabel : Label3D = $InteractionLabel
 @onready var timeToSolveTimer : Timer = $TimeToSolveTimer
+@onready var timerBar : ProgressBar = $TimerBar
 
 var isInteractable : bool = false
 
@@ -17,19 +18,28 @@ func _ready() -> void:
 	interactionLabel.visible = false
 	timeToSolveTimer.wait_time = timeToSolve
 	timeToSolveTimer.start()
+	timerBar.modulate = Color.YELLOW
 
 
 func _process(delta: float) -> void:
+	# manage Timer
 	if !halfTimeLeft:
 		halfTimeLeft = timeToSolveTimer.time_left < (timeToSolveTimer.wait_time / 2)
 		
 		if halfTimeLeft:
 			print("half time reached")
 	
-	# TODO: Abfrage auf Global.StateMachine
-	if isInteractable && Input.is_action_just_pressed("Interact_E"):
-		trigger_station_minigame()
+	# manage timer bar
+	var ratio = clamp(timeToSolveTimer.time_left / timeToSolveTimer.wait_time, 0, 1)
+	timerBar.value = ratio * 100
 
+	if ratio < 0.5 && timerBar.modulate == Color.YELLOW:
+		timerBar.modulate = Color.RED
+	
+	# manage interaction
+	if isInteractable && Input.is_action_just_pressed("Interact_E") && Global.gameState == Global.GameState.DEFAULT:
+		trigger_station_minigame()
+	
 func _on_interaction_area_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D:
 		print("Player entered interaction area of object: " + name)
