@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 	
 func _change_chaos(chaos: int) -> void:
 	currentChaos += chaos
+	print("Chaos changed by: " + str(chaos))
 	
 func _change_money(money: int) -> void:
 	currentMoney += money

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ck0wrrdx4m4a2"]
 
 [ext_resource type="Script" uid="uid://ca5ab0csptgjf" path="res://station_blueprint.gd" id="1_7smst"]
-[ext_resource type="ArrayMesh" uid="uid://cos4lby5ishyc" path="res://Imports/default_cube_Cube_001.res" id="1_cgtpb"]
+[ext_resource type="ArrayMesh" uid="uid://m8g1gukv5s7i" path="res://Imports/default_cube_Cube_001.res" id="1_cgtpb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7smst"]
 
@@ -34,11 +34,14 @@ font_size = 128
 [node name="TimeToSolveTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="ChaosTickTimer" type="Timer" parent="."]
+
 [node name="TimerBar" type="ProgressBar" parent="."]
-anchors_preset = -1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 step = 1.0
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
+[connection signal="timeout" from="ChaosTickTimer" to="." method="_on_chaos_tick_timer_timeout"]

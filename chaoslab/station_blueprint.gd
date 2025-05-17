@@ -2,16 +2,19 @@ extends Node3D
 
 @onready var interactionLabel : Label3D = $InteractionLabel
 @onready var timeToSolveTimer : Timer = $TimeToSolveTimer
+@onready var chaosTickTimer : Timer = $ChaosTickTimer
 @onready var timerBar : ProgressBar = $TimerBar
 
 var isInteractable : bool = false
 
 @export var timeToSolve : float = 10.0
 var halfTimeLeft : bool = false
+@export var minigameDuration : float = 5.0
 
-@export var chaosChangeByFinish : float = 50.0
-var chaosChangePerSec : float = 10.0
-var maxChaosChangePerSec : float = 50.0 
+@export var chaosChangeByFinish : int = 50
+var chaosChangePerSec : int = 10
+var minChaosChangePerSec : int = 10
+var maxChaosChangePerSec : int = 50
 
 
 func _ready() -> void:
@@ -36,6 +39,12 @@ func _process(delta: float) -> void:
 
 		if ratio < 0.5 && timerBar.modulate == Color.YELLOW:
 			timerBar.modulate = Color.RED
+			
+		# manage chaos increase at half time
+		if halfTimeLeft:
+			chaosChangePerSec = lerp(maxChaosChangePerSec, minChaosChangePerSec, timeToSolveTimer.time_left / (timeToSolveTimer.wait_time /2))
+			if chaosTickTimer.is_stopped():
+				chaosTickTimer.start()
 	else:
 		pass
 		#print("timer stopped")
@@ -63,13 +72,20 @@ func trigger_station_minigame() -> void:
 	interactionLabel.visible = false
 	isInteractable = false
 	timeToSolveTimer.stop()
+	Global.gameState = Global.GameState.MINIGAME
 
 
 func minigame_finished(completed : bool) -> void:
 	if completed:
 		print("Minigame completed!")
-		#TODO: Global.change_chaos(chaosChange)
+		Global.change_chaos(-chaosChangeByFinish)
 	else:
 		print("Minigame failed!")
-		#TODO: Global.change_chaos(-chaosChange)
+		Global.change_chaos(chaosChangeByFinish)
+	
+	Global.gameState = Global.GameState.DEFAULT
 	queue_free()
+
+
+func _on_chaos_tick_timer_timeout() -> void:
+	Global._change_chaos(chaosChangePerSec)
