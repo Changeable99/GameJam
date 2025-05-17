@@ -54,5 +54,5 @@ func _on_new_station_timer_timeout() -> void:
 	#print("randomStation: " + randomStation.name)
 	
 	var newStation = randomStation.instantiate()
-	newStation.global_transform.origin = worldPosRandomCell
 	add_child(newStation)
+	newStation.global_transform.origin = worldPosRandomCell

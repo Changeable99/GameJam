@@ -29,8 +29,10 @@ func _ready() -> void:
 	minigameDurationTimer.wait_time = minigameDuration
 	
 	# progress bar initiatlization
-	styleBoxFill = progressBar.get_theme_stylebox("fill")
-	styleBoxFill.bg_color = Color.YELLOW
+	styleBoxFill = progressBar.get_theme_stylebox("fill").duplicate()  # Neue Instanz
+	styleBoxFill.bg_color = Color.YELLOW  # Farbe setzen
+	progressBar.add_theme_stylebox_override("fill", styleBoxFill)  # Override für ProgressBar
+
 
 func _process(delta: float) -> void:
 	# manage Timer
