@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dc6d62uiqrsws" path="res://start_game_button.gd" id="2_2p34a"]
 [ext_resource type="Script" uid="uid://qxjlnkrbs0x" path="res://exit_game_button.gd" id="3_j5qoq"]
 [ext_resource type="Script" uid="uid://cmdcdoxb07w8n" path="res://scoreboard_button.gd" id="3_oft6u"]
-[ext_resource type="Script" uid="uid://cus17xxe5eqoj" path="res://exit_button.gd" id="5_0d135"]
+[ext_resource type="PackedScene" uid="uid://c4j048wfiq14p" path="res://scoreboard.tscn" id="5_0d135"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -35,12 +35,14 @@ text = "ChaosLab"
 horizontal_alignment = 1
 
 [node name="StartGame_button" type="Button" parent="CanvasLayer/MainMenu_box"]
+process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "StartGame"
 script = ExtResource("2_2p34a")
 
 [node name="Scoreboard_button" type="Button" parent="CanvasLayer/MainMenu_box"]
+process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Score
@@ -48,40 +50,26 @@ text = "Score
 script = ExtResource("3_oft6u")
 
 [node name="ExitGame_button" type="Button" parent="CanvasLayer/MainMenu_box"]
+process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Exit Game"
 script = ExtResource("3_j5qoq")
 
-[node name="Scoreboard_box" type="VBoxContainer" parent="CanvasLayer"]
+[node name="Scoreboard" parent="CanvasLayer" instance=ExtResource("5_0d135")]
 visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -246.5
-offset_right = 246.5
-offset_bottom = 145.0
-grow_horizontal = 2
 
-[node name="Scoreboard_label" type="Label" parent="CanvasLayer/Scoreboard_box"]
-layout_mode = 2
-theme_override_constants/outline_size = 12
-theme_override_font_sizes/font_size = 64
-text = "ScoreBoard"
-horizontal_alignment = 1
-
-[node name="Score_box" type="VBoxContainer" parent="CanvasLayer/Scoreboard_box"]
-layout_mode = 2
-
-[node name="Score_label" type="Label" parent="CanvasLayer/Scoreboard_box/Score_box"]
-layout_mode = 2
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
-text = "Player 1: 00:50"
-horizontal_alignment = 1
-
-[node name="Exit_button" type="Button" parent="CanvasLayer/Scoreboard_box"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Exit Scoreboard"
-script = ExtResource("5_0d135")
+[node name="HowToPlay" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -390.0
+offset_bottom = 270.0
+grow_horizontal = 0
+scale = Vector2(0.994892, 0.995521)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 22
+text = "How to play:
+Keep the chaos bar balanced to gain maximum income. Experiments will spawn and will increase chaos over time. Handle experiments with \"E\" and complete the minigames to reduce chaos. If you run out of money the game ends."
+autowrap_mode = 2
+justification_flags = 171

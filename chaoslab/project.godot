@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ChaosLab"
-run/main_scene="uid://cwwjqpbhoy278"
+run/main_scene="uid://6y7ac7hf71xw"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 run/quality/use_taa=true
