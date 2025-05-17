@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ct37gv3kkr8sw"
-path="res://.godot/imported/default_box.glb-2739a57e99261dedaee4bb197c251cd9.scn"
+uid="uid://6jjy7lyla08n"
+path="res://.godot/imported/default_table.glb-29a7cb74c8bafe79834d5c9ddb7429d8.scn"
 
 [deps]
 
-source_file="res://Imports/default_box.glb"
-dest_files=["res://.godot/imported/default_box.glb-2739a57e99261dedaee4bb197c251cd9.scn"]
+source_file="res://Imports/default_table.glb"
+dest_files=["res://.godot/imported/default_table.glb-29a7cb74c8bafe79834d5c9ddb7429d8.scn"]
 
 [params]
 
@@ -34,13 +34,13 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "meshes": {
-"default_box_Cube_001": {
+"default_table_Cube_003": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://Imports/default_box_Cube_001.res"
+"save_to_file/path": "res://Imports/default_table_Cube_003.res"
 }
 }
 }
