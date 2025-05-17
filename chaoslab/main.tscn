@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcp7p5dtgh4m2"]
+[gd_scene load_steps=6 format=3 uid="uid://bcp7p5dtgh4m2"]
 
 [ext_resource type="PackedScene" uid="uid://d2xpqhe1522tx" path="res://beginner_level.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bkddv5iicpqk" path="res://player_character.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://8xef1lsrncw2" path="res://main_camera.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" path="res://station_blueprint.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dsgo10p2vikos" path="res://HUD.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node3D"]
 
@@ -21,3 +22,5 @@ transform = Transform3D(-0.0120329, 0.695093, -0.718819, 0.709226, 0.512686, 0.4
 
 [node name="StationBlueprint" parent="." instance=ExtResource("4_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14388, 0.499856, -3.13045)
+
+[node name="Control" parent="." instance=ExtResource("5_lquwl")]

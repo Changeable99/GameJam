@@ -5,8 +5,6 @@ var currentChaos: int = 500
 var currentTime = 0
 var displayTime: String
 
-@onready var playerCharacter = $PlayerCharacter
-
 enum GameState {
 	DEFAULT,
 	MINIGAME,
