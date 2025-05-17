@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwwjqpbhoy278"]
+[gd_scene load_steps=7 format=3 uid="uid://cwwjqpbhoy278"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_272bh"]
 [ext_resource type="PackedScene" uid="uid://d2xpqhe1522tx" path="res://beginner_level.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bkddv5iicpqk" path="res://player_character.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://dsgo10p2vikos" path="res://HUD.tscn" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://dtphc4esvkrwt" path="res://reaction_game.tscn" id="7_5vw27"]
-[ext_resource type="Script" uid="uid://vodf70emwk4" path="res://reaction_game.gd" id="8_kek77"]
+[ext_resource type="PackedScene" uid="uid://b650ls2anb7gj" path="res://button_smash.tscn" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://b3mv35n6fubay" path="res://HUD.tscn" id="5_lquwl"]
 
 [sub_resource type="Environment" id="Environment_272bh"]
 background_mode = 1
@@ -44,3 +43,6 @@ environment = SubResource("Environment_272bh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.61951, 0)
 shadow_enabled = true
 omni_range = 20.2277
+
+[node name="StationBlueprint" parent="." instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.490828, 0.500158, 2.48057)

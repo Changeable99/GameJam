@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsgo10p2vikos"]
+[gd_scene load_steps=5 format=3 uid="uid://b3mv35n6fubay"]
 
 [ext_resource type="Texture2D" uid="uid://c7l7y4io18k3u" path="res://Imports/dogecoin_placeholder.png" id="1_efote"]
-[ext_resource type="Script" uid="uid://4rensbcf73ha" path="res://time_label.gd" id="1_k5de2"]
-[ext_resource type="Script" uid="uid://ld4o7mjieyao" path="res://money_label.gd" id="2_ne771"]
-[ext_resource type="Script" uid="uid://8hfab55olhwn" path="res://chaos_bar.gd" id="3_vow1y"]
+[ext_resource type="Script" path="res://time_label.gd" id="1_k5de2"]
+[ext_resource type="Script" path="res://money_label.gd" id="2_ne771"]
+[ext_resource type="Script" path="res://chaos_bar.gd" id="3_vow1y"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

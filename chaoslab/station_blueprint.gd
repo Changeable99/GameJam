@@ -4,7 +4,8 @@ extends Node3D
 @onready var timeToSolveTimer : Timer = $TimeToSolveTimer
 @onready var chaosTickTimer : Timer = $ChaosTickTimer
 @onready var minigameDurationTimer : Timer = $MinigameDurationTimer
-@onready var timerBar : ProgressBar = $SubViewport/TimerBar
+@onready var progressBar : ProgressBar = $SubViewport/TimerBar
+@onready var progressBarMesh : MeshInstance3D = $ProgressBarMesh
 
 var styleBoxFill : StyleBoxFlat
 var isInteractable : bool = false
@@ -28,7 +29,7 @@ func _ready() -> void:
 	minigameDurationTimer.wait_time = minigameDuration
 	
 	# progress bar initiatlization
-	styleBoxFill = timerBar.get_theme_stylebox("fill")
+	styleBoxFill = progressBar.get_theme_stylebox("fill")
 	styleBoxFill.bg_color = Color.YELLOW
 
 func _process(delta: float) -> void:
@@ -42,12 +43,12 @@ func _process(delta: float) -> void:
 	
 		# manage timer bar
 		var ratio = clamp(timeToSolveTimer.time_left / timeToSolveTimer.wait_time, 0, 1)
-		timerBar.value = ratio * 100
+		progressBar.value = ratio * 100
 
 		if ratio < 0.5 && styleBoxFill.bg_color == Color.YELLOW:
-			var styleBoxFill : StyleBoxFlat = timerBar.get_theme_stylebox("fill")
+			var styleBoxFill : StyleBoxFlat = progressBar.get_theme_stylebox("fill")
 			styleBoxFill.bg_color = Color.RED
-			timerBar.add_theme_color_override("font_color", Color(Color.GHOST_WHITE))
+			progressBar.add_theme_color_override("font_color", Color(Color.GHOST_WHITE))
 			
 		# manage chaos increase at half time
 		if halfTimeLeft:
@@ -78,6 +79,8 @@ func trigger_station_minigame() -> void:
 	print("Station event triggered")
 	interactionLabel.visible = false
 	isInteractable = false
+	progressBar.visible = false
+	progressBarMesh.visible = false
 	timeToSolveTimer.stop()
 	minigameDurationTimer.start()
 	Global.gameState = Global.GameState.MINIGAME
@@ -98,7 +101,7 @@ func _on_chaos_tick_timer_timeout() -> void:
 
 func _on_time_to_solve_timer_timeout() -> void:
 	print("too slow")
-	#minigame_finished(false)
+	minigame_finished(false)
 	
 func _on_minigame_duration_timer_timeout() -> void:
 	print("minigame not finished in time")

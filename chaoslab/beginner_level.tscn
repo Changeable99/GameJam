@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2xpqhe1522tx"]
+[gd_scene load_steps=10 format=3 uid="uid://d2xpqhe1522tx"]
 
+[ext_resource type="Script" uid="uid://bm3t13phglf2b" path="res://beginner_level.gd" id="1_k683x"]
 [ext_resource type="MeshLibrary" uid="uid://xlyao7oiu14r" path="res://Tiles.tres" id="1_w32yg"]
 [ext_resource type="Texture2D" uid="uid://dg2qoy1vx1rwc" path="res://Imports/aged_stone_tiles_texture_by_dactilardesign_d540tdn.jpg" id="2_7rxqe"]
+[ext_resource type="PackedScene" uid="uid://b650ls2anb7gj" path="res://button_smash.tscn" id="2_b61bx"]
+[ext_resource type="PackedScene" uid="uid://0ypwojm1karh" path="res://reaction_game.tscn" id="3_m10a1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w32yg"]
 size = Vector3(20, 1, 20)
@@ -18,6 +21,8 @@ albedo_color = Color(0.8463, 0.90768, 0.93, 1)
 roughness = 0.0
 
 [node name="BeginnerLevel" type="Node3D"]
+script = ExtResource("1_k683x")
+spawnableStations = Array[PackedScene]([ExtResource("2_b61bx"), ExtResource("3_m10a1")])
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_w32yg")
@@ -40,3 +45,7 @@ material_override = SubResource("StandardMaterial3D_k683x")
 mesh = SubResource("PlaneMesh_w32yg")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_w32yg")
+
+[node name="NewStationSpawnTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="NewStationSpawnTimer" to="." method="_on_new_station_timer_timeout"]
