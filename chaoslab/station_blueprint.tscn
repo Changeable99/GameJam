@@ -33,6 +33,7 @@ script = ExtResource("1_7smst")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = ExtResource("2_7smst")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
@@ -45,7 +46,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 shape = SubResource("BoxShape3D_k6kki")
 
 [node name="InteractionLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 1.75, -0.25)
+transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 1.25, -0.25)
 text = "Interact \"E\""
 font_size = 64
 
@@ -57,7 +58,7 @@ one_shot = true
 [node name="MinigameDurationTimer" type="Timer" parent="."]
 
 [node name="ProgressBarMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 1.2446, 0)
+transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 0.745, 0)
 mesh = SubResource("QuadMesh_4h062")
 
 [node name="SubViewport" type="SubViewport" parent="."]
