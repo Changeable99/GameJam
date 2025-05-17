@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck0wrrdx4m4a2"]
+[gd_scene load_steps=10 format=3 uid="uid://ck0wrrdx4m4a2"]
 
 [ext_resource type="Script" uid="uid://ca5ab0csptgjf" path="res://station_blueprint.gd" id="1_7smst"]
 [ext_resource type="ArrayMesh" uid="uid://m8g1gukv5s7i" path="res://Imports/default_cube_Cube_001.res" id="1_cgtpb"]
@@ -7,6 +7,24 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k6kki"]
 size = Vector3(0.95, 0.5, 0.95)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7smst"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7smst"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_7smst")
+
+[sub_resource type="QuadMesh" id="QuadMesh_4h062"]
+material = SubResource("StandardMaterial3D_7smst")
+size = Vector2(2, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7smst"]
+bg_color = Color(0.160784, 0.631373, 0.2, 0.784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6kki"]
+bg_color = Color(0.6, 0.6, 1, 1)
 
 [node name="StationBlueprint" type="Node3D"]
 script = ExtResource("1_7smst")
@@ -36,12 +54,27 @@ one_shot = true
 
 [node name="ChaosTickTimer" type="Timer" parent="."]
 
-[node name="TimerBar" type="ProgressBar" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
+[node name="MinigameDurationTimer" type="Timer" parent="."]
+
+[node name="ProgressBarMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2446, 0)
+mesh = SubResource("QuadMesh_4h062")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(100, 27)
+
+[node name="TimerBar" type="ProgressBar" parent="SubViewport"]
+custom_minimum_size = Vector2(100, 27)
+offset_right = 100.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_7smst")
+theme_override_styles/fill = SubResource("StyleBoxFlat_k6kki")
 step = 1.0
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
+[connection signal="timeout" from="TimeToSolveTimer" to="." method="_on_time_to_solve_timer_timeout"]
 [connection signal="timeout" from="ChaosTickTimer" to="." method="_on_chaos_tick_timer_timeout"]
+[connection signal="timeout" from="MinigameDurationTimer" to="." method="_on_minigame_duration_timer_timeout"]
