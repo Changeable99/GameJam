@@ -1,10 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://bkddv5iicpqk"]
 
 [ext_resource type="Script" uid="uid://mp14s2lqra1s" path="res://character_body_3d.gd" id="1_02ohv"]
+[ext_resource type="ArrayMesh" uid="uid://dwipli6jh7s1m" path="res://Imports/Player_Sphere_003.res" id="2_5up26"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5up26"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_4akcp"]
 
 [node name="PlayerCharacter" type="Node3D"]
 
@@ -15,4 +14,5 @@ script = ExtResource("1_02ohv")
 shape = SubResource("CylinderShape3D_5up26")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/CollisionShape3D"]
-mesh = SubResource("CylinderMesh_4akcp")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00227499, -0.606669, 0.00081706)
+mesh = ExtResource("2_5up26")
