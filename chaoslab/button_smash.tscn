@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ck0wrrdx4m4a2" path="res://station_blueprint.tscn" id="1_mn1lg"]
 [ext_resource type="Script" uid="uid://bm0ivw630ko4o" path="res://button_smash.gd" id="2_mea4l"]
-[ext_resource type="ArrayMesh" uid="uid://bnq1srs7addrf" path="res://Imports/Magnet_BézierCurve_002.res" id="3_mea4l"]
+[ext_resource type="ArrayMesh" uid="uid://b4rumbfaedjq0" path="res://Imports/Magnet_BézierCurve_002.res" id="3_mea4l"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_mn1lg"]
 viewport_path = NodePath("SubViewport")
@@ -21,7 +21,11 @@ size = Vector2(2, 0.5)
 script = ExtResource("2_mea4l")
 
 [node name="MeshInstance3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = ExtResource("3_mea4l")
+
+[node name="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00369138, 0, -0.000492811)
 
 [node name="ProgressBarMesh" parent="." index="6"]
 mesh = SubResource("QuadMesh_hvn5n")
