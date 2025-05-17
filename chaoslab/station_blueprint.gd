@@ -39,9 +39,6 @@ func _process(delta: float) -> void:
 	if !timeToSolveTimer.is_stopped():
 		if !halfTimeLeft:
 			halfTimeLeft = timeToSolveTimer.time_left < (timeToSolveTimer.wait_time / 2)
-		
-			if halfTimeLeft:
-				print("half time reached")
 	
 		# manage timer bar
 		var ratio = clamp(timeToSolveTimer.time_left / timeToSolveTimer.wait_time, 0, 1)
@@ -57,9 +54,6 @@ func _process(delta: float) -> void:
 			chaosChangePerSec = lerp(maxChaosChangePerSec, minChaosChangePerSec, timeToSolveTimer.time_left / (timeToSolveTimer.wait_time /2))
 			if chaosTickTimer.is_stopped():
 				chaosTickTimer.start()
-	else:
-		pass
-		#print("timer stopped")
 	
 	# manage interaction
 	if isInteractable && Input.is_action_just_pressed("Interact_E") && Global.gameState == Global.GameState.DEFAULT:
@@ -67,18 +61,17 @@ func _process(delta: float) -> void:
 	
 func _on_interaction_area_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D:
-		print("Player entered interaction area of object: " + name)
+		#print("Player entered interaction area of object: " + name)
 		interactionLabel.visible = true
 		isInteractable = true
 
 func _on_interaction_area_body_exited(body: Node3D) -> void:
 	if body is CharacterBody3D:
-		print("Player left  interaction area of object: " + name)
+		#print("Player left  interaction area of object: " + name)
 		interactionLabel.visible = false
 		isInteractable = false
 
 func trigger_station_minigame() -> void:
-	print("Station event triggered")
 	interactionLabel.visible = false
 	isInteractable = false
 	progressBar.visible = false
@@ -89,10 +82,8 @@ func trigger_station_minigame() -> void:
 
 func minigame_finished(completed : bool) -> void:
 	if completed:
-		print("Minigame completed!")
 		Global._change_chaos(-chaosChangeByFinish)
 	else:
-		print("Minigame failed!")
 		Global._change_chaos(chaosChangeByFinish)
 	
 	Global.gameState = Global.GameState.DEFAULT
@@ -102,9 +93,7 @@ func _on_chaos_tick_timer_timeout() -> void:
 	Global._change_chaos(chaosChangePerSec)
 
 func _on_time_to_solve_timer_timeout() -> void:
-	print("too slow")
 	minigame_finished(false)
 	
 func _on_minigame_duration_timer_timeout() -> void:
-	print("minigame not finished in time")
 	minigame_finished(false)

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ck0wrrdx4m4a2" path="res://station_blueprint.tscn" id="1_mn1lg"]
 [ext_resource type="Script" uid="uid://bm0ivw630ko4o" path="res://button_smash.gd" id="2_mea4l"]
-[ext_resource type="ArrayMesh" uid="uid://cjjpxahs1057m" path="res://Imports/default_table_Cube_003.res" id="3_mea4l"]
+[ext_resource type="ArrayMesh" uid="uid://bnq1srs7addrf" path="res://Imports/Magnet_BézierCurve_002.res" id="3_mea4l"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_mn1lg"]
 viewport_path = NodePath("SubViewport")
