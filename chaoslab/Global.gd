@@ -1,10 +1,17 @@
 extends Node
 
-var currentMoney: int = 1000
-var currentChaos: int = 500
+var startMoney: int = 1000
+var startChaos: int = 500
+var startTime = 0
+
+var currentMoney: int
+var moneyFactor = 0.5
+var currentChaos: int
 var currentTime = 0
 var displayTime: String
 var gameState: GameState = GameState.DEFAULT
+
+var game_started = false
 
 enum GameState {
 	DEFAULT,
@@ -12,9 +19,16 @@ enum GameState {
 	MENU
 }
 
+func start_game():
+	currentChaos = startChaos
+	currentMoney = startMoney
+	currentTime = startTime
+	game_started = true
+
 func _process(delta: float) -> void:
-	_change_money(-3)
-	_calculate_time(delta)
+	if game_started:
+		_calculate_time(delta)
+		_calculate_income()
 	
 func _change_chaos(chaos: int) -> void:
 	currentChaos += chaos
@@ -34,3 +48,15 @@ func _calculate_time(delta) -> void:
 	
 func _end_game():
 	print("GAME OVER")
+	
+func _calculate_income() -> void :
+	var max_chaos = 500
+	var income = 0
+	var distance = abs(currentChaos - max_chaos) 
+	
+	if currentChaos >= 300 and currentChaos <= 600:
+		income = (100 - (distance)) * moneyFactor
+	else:
+		income = -(distance - 100) * 0.2 * moneyFactor
+	
+	_change_money(income)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://ck0wrrdx4m4a2"]
 
 [ext_resource type="Script" uid="uid://ca5ab0csptgjf" path="res://station_blueprint.gd" id="1_7smst"]
-[ext_resource type="ArrayMesh" uid="uid://m8g1gukv5s7i" path="res://Imports/default_cube_Cube_001.res" id="1_cgtpb"]
+[ext_resource type="ArrayMesh" uid="uid://m3e32lj3mxdc" path="res://Imports/default_cube_Cube_001.res" id="1_cgtpb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7smst"]
 
@@ -17,6 +17,7 @@ shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_7smst")
 
 [sub_resource type="QuadMesh" id="QuadMesh_4h062"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_7smst")
 size = Vector2(2, 0.5)
 

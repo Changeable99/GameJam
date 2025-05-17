@@ -1,12 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2xpqhe1522tx"]
+[gd_scene load_steps=7 format=3 uid="uid://d2xpqhe1522tx"]
 
 [ext_resource type="MeshLibrary" uid="uid://xlyao7oiu14r" path="res://Tiles.tres" id="1_w32yg"]
+[ext_resource type="Texture2D" uid="uid://dg2qoy1vx1rwc" path="res://Imports/aged_stone_tiles_texture_by_dactilardesign_d540tdn.jpg" id="2_7rxqe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w32yg"]
 size = Vector3(20, 1, 20)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k683x"]
+albedo_texture = ExtResource("2_7rxqe")
+uv1_scale = Vector3(25, 25, 25)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_w32yg"]
-size = Vector2(20, 20)
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w32yg"]
+albedo_color = Color(0.8463, 0.90768, 0.93, 1)
+roughness = 0.0
 
 [node name="BeginnerLevel" type="Node3D"]
 
@@ -27,5 +36,7 @@ shape = SubResource("BoxShape3D_w32yg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 transform = Transform3D(1, 7.80793e-11, -8.73115e-11, -5.86393e-11, 1, 1.27329e-11, 8.73115e-11, -1.27329e-11, 1, 0.0013767, 7.61377e-07, 0.00439303)
+material_override = SubResource("StandardMaterial3D_k683x")
 mesh = SubResource("PlaneMesh_w32yg")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_w32yg")

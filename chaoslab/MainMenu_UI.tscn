@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b8bsp0avpyw5k"]
 
-[ext_resource type="Texture2D" uid="uid://c7l7y4io18k3u" path="res://dogecoin_placeholder.png" id="1_m2lub"]
+[ext_resource type="Texture2D" uid="uid://c7l7y4io18k3u" path="res://Imports/dogecoin_placeholder.png" id="1_m2lub"]
 [ext_resource type="Script" uid="uid://dc6d62uiqrsws" path="res://start_game_button.gd" id="2_2p34a"]
 [ext_resource type="Script" uid="uid://qxjlnkrbs0x" path="res://exit_game_button.gd" id="3_j5qoq"]
 [ext_resource type="Script" uid="uid://cmdcdoxb07w8n" path="res://scoreboard_button.gd" id="3_oft6u"]

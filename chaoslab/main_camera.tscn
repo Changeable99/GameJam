@@ -1,5 +1,15 @@
-[gd_scene load_steps=0 format=3 uid="uid://8xef1lsrncw2"]
+[gd_scene load_steps=2 format=3 uid="uid://8xef1lsrncw2"]
+
+[sub_resource type="Environment" id="Environment_o40l1"]
+background_mode = 2
+ambient_light_source = 3
+reflected_light_source = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
 
 [node name="MainCamera" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
+environment = SubResource("Environment_o40l1")
