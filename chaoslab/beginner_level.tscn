@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://d2xpqhe1522tx"]
 
-[ext_resource type="Script" path="res://beginner_level.gd" id="1_k683x"]
+[ext_resource type="Script" uid="uid://bm3t13phglf2b" path="res://beginner_level.gd" id="1_k683x"]
 [ext_resource type="MeshLibrary" uid="uid://xlyao7oiu14r" path="res://Tiles.tres" id="1_w32yg"]
 [ext_resource type="Texture2D" uid="uid://dg2qoy1vx1rwc" path="res://Imports/aged_stone_tiles_texture_by_dactilardesign_d540tdn.jpg" id="2_7rxqe"]
 [ext_resource type="PackedScene" uid="uid://dh3pihdqurtt3" path="res://button_smash.tscn" id="2_b61bx"]
