@@ -31,5 +31,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25762, 0)
 text = "Interact \"E\""
 font_size = 128
 
+[node name="TimeToSolveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerBar" type="ProgressBar" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+step = 1.0
+
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]

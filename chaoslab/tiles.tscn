@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://5irqrr4c72aw"]
+[gd_scene load_steps=3 format=3 uid="uid://3y26r2na41si"]
 
-[ext_resource type="ArrayMesh" uid="uid://cos4lby5ishyc" path="res://Imports/default_cube_Cube_001.res" id="1_7h0kd"]
+[ext_resource type="ArrayMesh" uid="uid://m8g1gukv5s7i" path="res://Imports/default_cube_Cube_001.res" id="1_7h0kd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7h0kd"]
 
