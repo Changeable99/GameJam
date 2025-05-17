@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://cwwjqpbhoy278"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_272bh"]
+[ext_resource type="Script" uid="uid://d02ypxcg5vi6g" path="res://main.gd" id="1_272bh"]
 [ext_resource type="PackedScene" uid="uid://d2xpqhe1522tx" path="res://beginner_level.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bkddv5iicpqk" path="res://player_character.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://dh3pihdqurtt3" path="res://button_smash.tscn" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://b650ls2anb7gj" path="res://button_smash.tscn" id="5_7mycd"]
 [ext_resource type="PackedScene" uid="uid://b3mv35n6fubay" path="res://HUD.tscn" id="5_lquwl"]
 
 [sub_resource type="Environment" id="Environment_272bh"]

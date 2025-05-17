@@ -31,6 +31,7 @@ func _process(delta: float) -> void:
 		_calculate_income()
 	
 func _change_chaos(chaos: int) -> void:
+	print("currentChaos += " + str(chaos))
 	currentChaos += chaos
 	print("Chaos changed by: " + str(chaos))
 	
