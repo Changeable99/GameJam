@@ -18,4 +18,7 @@ func _physics_process(delta: float) -> void:
 			
 		inputVector = inputVector.normalized()
 		velocity = Vector3(inputVector.x,0,inputVector.y)*movementSpeed
+		var lookAtRotation: Vector3 = Vector3(-inputVector.x, 0, -inputVector.y)
+		look_at(global_transform.origin + lookAtRotation, Vector3.UP)
+		
 		move_and_slide()
