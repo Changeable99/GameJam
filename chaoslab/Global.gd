@@ -51,9 +51,9 @@ func _end_game():
 	print("GAME OVER")
 	
 func _calculate_income() -> void :
-	var max_chaos = 500
+	var maxChaos = 500
 	var income = 0
-	var distance = abs(currentChaos - max_chaos) 
+	var distance = abs(currentChaos - maxChaos) 
 	
 	if currentChaos >= 300 and currentChaos <= 600:
 		income = (100 - (distance)) * moneyFactor

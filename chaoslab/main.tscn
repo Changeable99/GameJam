@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwwjqpbhoy278"]
+[gd_scene load_steps=6 format=3 uid="uid://cwwjqpbhoy278"]
 
 [ext_resource type="Script" uid="uid://d02ypxcg5vi6g" path="res://main.gd" id="1_272bh"]
 [ext_resource type="PackedScene" uid="uid://d2xpqhe1522tx" path="res://beginner_level.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bkddv5iicpqk" path="res://player_character.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://b650ls2anb7gj" path="res://button_smash.tscn" id="5_7mycd"]
 [ext_resource type="PackedScene" uid="uid://b3mv35n6fubay" path="res://HUD.tscn" id="5_lquwl"]
 
 [sub_resource type="Environment" id="Environment_272bh"]
@@ -36,13 +35,10 @@ shadow_enabled = true
 [node name="Control" parent="." instance=ExtResource("5_lquwl")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, -3.78552e-08, -2.18557e-08, 3.78552e-08, 0.5, 0.866025, -2.18557e-08, -0.866025, 0.5, -0.316556, 7.61346, 6.15818)
+transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642787, 0, -0.642787, 0.766044, 0, 5, 8.5)
 environment = SubResource("Environment_272bh")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.61951, 0)
 shadow_enabled = true
 omni_range = 20.2277
-
-[node name="StationBlueprint" parent="." instance=ExtResource("5_7mycd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.490828, 0.500158, 2.48057)
