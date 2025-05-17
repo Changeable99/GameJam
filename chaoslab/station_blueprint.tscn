@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ck0wrrdx4m4a2"]
 
 [ext_resource type="Script" uid="uid://ca5ab0csptgjf" path="res://station_blueprint.gd" id="1_7smst"]
-[ext_resource type="ArrayMesh" uid="uid://cos4lby5ishyc" path="res://Imports/default_cube_Cube_001.res" id="1_cgtpb"]
+[ext_resource type="ArrayMesh" uid="uid://m3e32lj3mxdc" path="res://Imports/default_cube_Cube_001.res" id="1_cgtpb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7smst"]
 
@@ -35,7 +35,7 @@ font_size = 128
 one_shot = true
 
 [node name="TimerBar" type="ProgressBar" parent="."]
-anchors_preset = -1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 step = 1.0

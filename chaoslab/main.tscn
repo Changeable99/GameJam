@@ -1,11 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwwjqpbhoy278"]
+[gd_scene load_steps=7 format=3 uid="uid://cwwjqpbhoy278"]
 
 [ext_resource type="PackedScene" uid="uid://d2xpqhe1522tx" path="res://beginner_level.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bkddv5iicpqk" path="res://player_character.tscn" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://bm0ivw630ko4o" path="res://button_smash.gd" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://8xef1lsrncw2" path="res://main_camera.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://dsgo10p2vikos" path="res://HUD.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://ck0wrrdx4m4a2" path="res://station_blueprint.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dsgo10p2vikos" path="res://HUD.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node3D"]
 
