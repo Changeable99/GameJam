@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh3pihdqurtt3"]
+
+[ext_resource type="PackedScene" uid="uid://ck0wrrdx4m4a2" path="res://station_blueprint.tscn" id="1_mn1lg"]
+[ext_resource type="Script" uid="uid://bm0ivw630ko4o" path="res://button_smash.gd" id="2_mea4l"]
+
+[node name="StationBlueprint" instance=ExtResource("1_mn1lg")]
+script = ExtResource("2_mea4l")
