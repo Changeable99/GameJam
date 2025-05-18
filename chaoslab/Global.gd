@@ -26,6 +26,7 @@ func start_game():
 	currentMoney = startMoney
 	currentTime = startTime
 	game_started = true
+	get_tree().paused = true
 
 func _process(delta: float) -> void:
 	if game_started:

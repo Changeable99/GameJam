@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3mv35n6fubay"]
+[gd_scene load_steps=16 format=3 uid="uid://b3mv35n6fubay"]
 
 [ext_resource type="Texture2D" uid="uid://c7l7y4io18k3u" path="res://Imports/dogecoin_placeholder.png" id="1_efote"]
 [ext_resource type="FontFile" uid="uid://cklntn6hls8xq" path="res://Imports/04B_09__.TTF" id="1_gbfpv"]
@@ -6,9 +6,10 @@
 [ext_resource type="Script" uid="uid://ld4o7mjieyao" path="res://money_label.gd" id="2_ne771"]
 [ext_resource type="Script" uid="uid://8hfab55olhwn" path="res://chaos_bar.gd" id="3_vow1y"]
 [ext_resource type="Texture2D" uid="uid://di5vgdukxxguw" path="res://Imports/chaosBar.png" id="4_gbfpv"]
-[ext_resource type="Script" uid="uid://bpn6uwt36nomb" path="res://gameover_window.gd" id="5_gv1iq"]
 [ext_resource type="Script" uid="uid://tug0o6ngkb16" path="res://score_label.gd" id="6_1and6"]
 [ext_resource type="Script" uid="uid://bm8tp7k5bncjl" path="res://exit_level_button.gd" id="7_1and6"]
+[ext_resource type="Texture2D" uid="uid://beqfaet8kjcm4" path="res://Imports/eastereggls.png" id="7_4x0me"]
+[ext_resource type="Script" uid="uid://dedtf6f0tf5n4" path="res://start_level_after_tutorial_button.gd" id="7_gbfpv"]
 [ext_resource type="PackedScene" uid="uid://qrujay6bvacp" path="res://button_smah_ui.tscn" id="8_w75gc"]
 
 [sub_resource type="Gradient" id="Gradient_n0ylh"]
@@ -43,6 +44,7 @@ offset_left = 25.0
 offset_top = 25.0
 offset_right = 237.0
 offset_bottom = 89.0
+theme_override_constants/separation = 20
 
 [node name="money_image" type="TextureRect" parent="CanvasLayer/money_box"]
 layout_mode = 2
@@ -104,27 +106,70 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_gbfpv")
 
-[node name="GAMEOVERWindow" type="PanelContainer" parent="CanvasLayer"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -270.5
-offset_top = -121.0
-offset_right = 270.5
-offset_bottom = 121.0
+[node name="TutorialWindow" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2, 2)
 pivot_offset = Vector2(270, 121)
 theme_override_styles/panel = SubResource("StyleBoxFlat_ne771")
-script = ExtResource("5_gv1iq")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/TutorialWindow"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TutorialWindow"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TutorialWindow/VBoxContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("7_4x0me")
+
+[node name="TutorialLabel" type="Label" parent="CanvasLayer/TutorialWindow/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 32
+text = "How to play: 
+Keep the chaos bar balanced to gain maximum income. Experiments will spawn and will increase chaos over time. Handle experiments with \"E\" and complete the minigames to reduce chaos. If you run out of money the game ends."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="StartLevel_button" type="Button" parent="CanvasLayer/TutorialWindow/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 64
+text = "Start
+"
+script = ExtResource("7_gbfpv")
+
+[node name="GAMEOVERWindow" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(270, 121)
+theme_override_styles/panel = SubResource("StyleBoxFlat_ne771")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GAMEOVERWindow"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.392157)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GAMEOVERWindow"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/separation = 20
 
 [node name="GAMEOVER_label" type="Label" parent="CanvasLayer/GAMEOVERWindow/VBoxContainer"]
