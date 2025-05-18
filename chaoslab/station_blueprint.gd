@@ -82,12 +82,30 @@ func trigger_station_minigame() -> void:
 
 func minigame_finished(completed : bool) -> void:
 	if completed:
+		play_win_sound()
 		Global._change_chaos(-chaosChangeByFinish)
 	else:
+		play_fail_sound()
 		Global._change_chaos(chaosChangeByFinish)
+		
+
 	
 	Global.gameState = Global.GameState.DEFAULT
 	queue_free()
+
+func play_win_sound():
+	var sound = AudioStreamPlayer3D.new()
+	sound.stream = preload("res://Imports/mingamewin.mp3")
+	get_tree().get_current_scene().add_child(sound)
+	sound.play()
+	sound.finished.connect(sound.queue_free)
+	
+func play_fail_sound():
+	var sound = AudioStreamPlayer3D.new()
+	sound.stream = preload("res://Imports/fail.mp3")
+	get_tree().get_current_scene().add_child(sound)
+	sound.play()
+	sound.finished.connect(sound.queue_free)
 
 func _on_chaos_tick_timer_timeout() -> void:
 	Global._change_chaos(chaosChangePerSec)

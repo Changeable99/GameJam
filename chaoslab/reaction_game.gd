@@ -65,4 +65,5 @@ func _input(event):
 				
 		if keysToPress.is_empty():
 			super.minigame_finished(true)
-			ui_instance.queue_free()
+			if ui_instance:
+				ui_instance.queue_free()

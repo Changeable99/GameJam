@@ -1,13 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwwjqpbhoy278"]
+[gd_scene load_steps=9 format=3 uid="uid://cwwjqpbhoy278"]
 
-[ext_resource type="PackedScene" uid="uid://vll4uqi2lfeo" path="res://button_hold.tscn" id="1_272bh"]
 [ext_resource type="PackedScene" uid="uid://d2xpqhe1522tx" path="res://beginner_level.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bkddv5iicpqk" path="res://player_character.tscn" id="2_0xm2m"]
 [ext_resource type="AudioStream" uid="uid://b0spwn2meb6s5" path="res://Imports/titlescreen-background.mp3" id="5_272bh"]
 [ext_resource type="PackedScene" uid="uid://b3mv35n6fubay" path="res://HUD.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dynfwpwgxcl0g" path="res://Imports/defaultWall.glb" id="6_7mycd"]
-[ext_resource type="PackedScene" uid="uid://dyq0vytanyk55" path="res://Imports/frame.glb" id="7_272bh"]
-[ext_resource type="PackedScene" uid="uid://0ypwojm1karh" path="res://reaction_game.tscn" id="8_5vw27"]
 
 [sub_resource type="GDScript" id="GDScript_1bvp3"]
 script/source = "extends Node3D
@@ -35,11 +32,11 @@ fog_enabled = true
 fog_mode = 1
 fog_density = 1.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_272bh"]
+size = Vector3(3.09082, 1.71631, 1)
+
 [node name="Main" type="Node3D"]
 script = SubResource("GDScript_1bvp3")
-
-[node name="StationBlueprint" parent="." instance=ExtResource("1_272bh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664628, 3.22256)
 
 [node name="BeginnerLevel" parent="." instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0293499, 0, -0.00357306)
@@ -65,8 +62,6 @@ omni_range = 20.2277
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_272bh")
 autoplay = true
-
-[node name="frame" parent="." instance=ExtResource("7_272bh")]
 
 [node name="Environment" type="Node" parent="."]
 
@@ -133,7 +128,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, -12)
 [node name="defaultWall21" parent="Environment" instance=ExtResource("6_7mycd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -12)
 
-[node name="ReactionGame" parent="." instance=ExtResource("8_5vw27")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8376, 0.491736, 0.984637)
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.490656, 0.358154, 5.5)
+shape = SubResource("BoxShape3D_272bh")
 
 [connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]
