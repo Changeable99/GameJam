@@ -1,5 +1,7 @@
 extends "res://station_blueprint.gd"
 
+@onready var holdTimer := Timer.new()
+
 var holdDurationGoal : float
 var minigameIsActive : bool = false
 
@@ -12,6 +14,7 @@ var goalHoldTimeMin : float
 var goalHoldTimeMax : float
 
 func _ready() -> void:
+	super._ready()
 	holdDurationGoal = randf_range(2.0, 5.0)
 	minigameDuration = holdDurationGoal + 2.0
 	goalPercentageMin = randf_range(0.1, 0.8)
@@ -23,18 +26,24 @@ func _ready() -> void:
 	
 	print("hold duration goal: " + str(holdDurationGoal) + " secs")
 	
-func _process(delta: float) -> void:
-	super._process(delta)
+	add_child(holdTimer)
+	holdTimer.wait_time = 0.01
+	holdTimer.one_shot = false
+	holdTimer.timeout.connect(_on_hold_tick)
+
+func _on_hold_tick() -> void:
+	holdTime += holdTimer.wait_time
+	#TODO: Progressbar
+
+func _input(event: InputEvent) -> void:
 	if minigameIsActive:
-		if Input.is_action_pressed("Interact_F"):
+		if event.is_action_pressed("Interact_F"):
 			if !isHolding:
 				isHolding = true
 				holdTime = 0.0
-			holdTime += delta
-		else:
-			if isHolding:
-				isHolding = false
-				on_key_released()
+		elif event.is_action_released("Interact_F") and isHolding:
+			isHolding = false
+			on_key_released()
 
 func trigger_station_minigame():
 	super.trigger_station_minigame()
