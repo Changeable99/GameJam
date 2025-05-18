@@ -14,6 +14,7 @@ var spawnableCells : Array = [Vector2(-5,5), Vector2(3,5), Vector2(5,2),
 var lastCellSpawned : Vector2 = Vector2(99, 99)
 
 func _ready() -> void:
+	randomize()
 	newStationSpawnTimer.wait_time = timeTillNextSpawn
 	newStationSpawnTimer.start()
 

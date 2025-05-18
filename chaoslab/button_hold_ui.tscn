@@ -1,14 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ueeofvwy2hbr"]
+[gd_scene load_steps=3 format=3 uid="uid://ueeofvwy2hbr"]
 
 [ext_resource type="Script" uid="uid://cou3tjoyheegd" path="res://button_hold_ui.gd" id="1_1wndh"]
-
-[sub_resource type="InputEventKey" id="InputEventKey_sr8y2"]
-device = -1
-keycode = 65
-unicode = 97
-
-[sub_resource type="Shortcut" id="Shortcut_n7gvr"]
-events = [SubResource("InputEventKey_sr8y2")]
+[ext_resource type="Script" uid="uid://mdpco7y6uv1b" path="res://buttonHold_button.gd" id="2_ps1y0"]
 
 [node name="button_hold_UI" type="Control"]
 layout_mode = 3
@@ -30,6 +23,7 @@ offset_left = -124.0
 offset_right = 124.0
 offset_bottom = 146.0
 grow_horizontal = 2
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
@@ -39,13 +33,52 @@ theme_override_font_sizes/font_size = 48
 text = "Hold \"F\" ..."
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="F" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="F" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 48
-shortcut = SubResource("Shortcut_n7gvr")
 text = " F "
+script = ExtResource("2_ps1y0")
+
+[node name="Panel" type="Panel" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="holdProgressBar" type="ProgressBar" parent="VBoxContainer/VBoxContainer/Panel"]
+layout_mode = 2
+offset_top = 20.0
+offset_right = 333.0
+offset_bottom = 45.0
+max_value = 1.0
+value = 0.5
+
+[node name="Goal" type="ColorRect" parent="VBoxContainer/VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 20.0
+offset_right = 52.0
+offset_bottom = 45.0
+color = Color(1, 0, 0, 1)
+
+[node name="minGoal" type="ColorRect" parent="VBoxContainer/VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 20.0
+offset_right = 42.0
+offset_bottom = 45.0
+color = Color(1, 0.916667, 0, 1)
+
+[node name="maxGoal" type="ColorRect" parent="VBoxContainer/VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 20.0
+offset_right = 63.0
+offset_bottom = 45.0
+color = Color(1, 0.917647, 0, 1)

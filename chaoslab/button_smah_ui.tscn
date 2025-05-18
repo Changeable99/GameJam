@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://qrujay6bvacp"]
+[gd_scene load_steps=8 format=3 uid="uid://qrujay6bvacp"]
 
 [ext_resource type="Script" uid="uid://b7kuxf07j018k" path="res://button_smah_ui.gd" id="1_sr8y2"]
+[ext_resource type="Script" uid="uid://cbeey14u38rcl" path="res://buttonSmash_buttonA.gd" id="2_n7gvr"]
+[ext_resource type="Script" uid="uid://di1htqcp12bon" path="res://buttonSmash_ButtonD.gd" id="3_vpkf8"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_sr8y2"]
 device = -1
@@ -57,6 +59,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 48
 shortcut = SubResource("Shortcut_n7gvr")
 text = " A "
+script = ExtResource("2_n7gvr")
 
 [node name="D" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -64,3 +67,4 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 48
 shortcut = SubResource("Shortcut_lg4l4")
 text = " D "
+script = ExtResource("3_vpkf8")
