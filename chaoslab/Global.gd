@@ -14,6 +14,7 @@ var scoreTime
 var highScore
 
 var game_started = false
+var gameOver = false
 
 enum GameState {
 	DEFAULT,
@@ -43,6 +44,9 @@ func _change_money(money: int) -> void:
 		currentMoney = 0
 		_end_game()
 	
+func _set_money(money: int) -> void:
+	currentMoney = money
+	
 func _calculate_time(delta) -> void:
 	currentTime += delta
 	var minutes = int(currentTime) / 60
@@ -51,6 +55,8 @@ func _calculate_time(delta) -> void:
 	
 func _end_game():
 	scoreTime = currentTime
+	_set_money(0)
+	gameOver = true
 	
 	if highScore:
 		if scoreTime >  highScore:

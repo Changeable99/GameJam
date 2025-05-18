@@ -52,6 +52,7 @@ texture = ExtResource("1_efote")
 expand_mode = 3
 
 [node name="money_label" type="Label" parent="CanvasLayer/money_box"]
+process_mode = 3
 layout_mode = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("1_gbfpv")
