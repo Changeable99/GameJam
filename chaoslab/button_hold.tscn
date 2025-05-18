@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://vll4uqi2lfeo"]
 
 [ext_resource type="PackedScene" uid="uid://ck0wrrdx4m4a2" path="res://station_blueprint.tscn" id="1_pcp24"]
-[ext_resource type="Script" uid="uid://metogx3mc7qn" path="res://button_hold.gd" id="2_2vyj8"]
-[ext_resource type="ArrayMesh" uid="uid://bf3fjg2n81gmy" path="res://Imports/TeslaCoil_Cylinder_002.res" id="2_xh6u3"]
+[ext_resource type="Script" path="res://button_hold.gd" id="2_2vyj8"]
+[ext_resource type="ArrayMesh" uid="uid://cgsb1tphk4iti" path="res://Imports/TeslaCoil_Cylinder_002.res" id="2_xh6u3"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xh6u3"]
 viewport_path = NodePath("SubViewport")
