@@ -1,6 +1,5 @@
 extends "res://station_blueprint.gd"
 
-@onready var holdTimer := Timer.new()
 @onready var buttonHoldUI = preload("res://button_hold_ui.tscn")
 
 var uiInstance
@@ -31,29 +30,18 @@ func _ready() -> void:
 		goalPercentage = 0.0
 	goalHoldTimeMin = goalPercentageMin * holdDurationGoal
 	goalHoldTimeMax = goalPercentageMax * holdDurationGoal
-	
-	#print("hold duration goal: " + str(holdDurationGoal) + " secs")
-	
-	add_child(holdTimer)
-	holdTimer.wait_time = 0.01
-	holdTimer.one_shot = false
-	holdTimer.timeout.connect(_on_hold_tick)
 
-func _on_hold_tick() -> void:
-	holdTime += holdTimer.wait_time
-	goalPercentage = holdTime / holdDurationGoal
-	print(holdTime/ holdDurationGoal)
-	
-	uiInstance.update_hold_progress(goalPercentage)
-
-func _input(event: InputEvent) -> void:
+func _process(delta: float) -> void:
+	super._process(delta)
 	if minigameIsActive:
-		if event.is_action_pressed("Interact_F"):
+		if Input.is_action_pressed("Interact_F"):
 			if !isHolding:
 				isHolding = true
 				holdTime = 0.0
-				holdTimer.start()
-		elif event.is_action_released("Interact_F") and isHolding:
+			holdTime += delta
+			goalPercentage = holdTime / holdDurationGoal
+			uiInstance.update_hold_progress(goalPercentage)
+		if Input.is_action_just_released("Interact_F"):
 			isHolding = false
 			on_key_released()
 
