@@ -5,9 +5,16 @@ var targetProgress := 40   # Wie oft muss gedrückt werden?
 var lastKey := ""          # Damit A und D abwechselnd gedrückt werden müssen
 var minigameIsActive : bool = false
 
+@onready var buttonSmashUI = preload("res://button_smah_ui.tscn")
+
+var ui_instance
+
 func trigger_station_minigame():
 	super.trigger_station_minigame()
 	minigameIsActive = true
+	ui_instance = buttonSmashUI.instantiate()
+	var canvas = get_tree().current_scene.get_node("HUD/CanvasLayer")
+	canvas.add_child(ui_instance)
 	
 func _input(event):
 	if not minigameIsActive:
@@ -26,6 +33,7 @@ func _input(event):
 	
 	# minigame completed
 	if progress >= targetProgress:
+		ui_instance.queue_free()
 		super.minigame_finished(true)
 #wenn aktiv, dann player movment stoppen
 #das es endet wenn ziel erreicht

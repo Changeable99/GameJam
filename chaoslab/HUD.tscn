@@ -1,12 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3mv35n6fubay"]
+[gd_scene load_steps=14 format=3 uid="uid://b3mv35n6fubay"]
 
 [ext_resource type="Texture2D" uid="uid://c7l7y4io18k3u" path="res://Imports/dogecoin_placeholder.png" id="1_efote"]
 [ext_resource type="Script" uid="uid://4rensbcf73ha" path="res://time_label.gd" id="1_k5de2"]
 [ext_resource type="Script" uid="uid://ld4o7mjieyao" path="res://money_label.gd" id="2_ne771"]
 [ext_resource type="Script" uid="uid://8hfab55olhwn" path="res://chaos_bar.gd" id="3_vow1y"]
+[ext_resource type="Texture2D" uid="uid://di5vgdukxxguw" path="res://Imports/chaosBar.png" id="4_gbfpv"]
 [ext_resource type="Script" uid="uid://bpn6uwt36nomb" path="res://gameover_window.gd" id="5_gv1iq"]
 [ext_resource type="Script" uid="uid://tug0o6ngkb16" path="res://score_label.gd" id="6_1and6"]
 [ext_resource type="Script" uid="uid://bm8tp7k5bncjl" path="res://exit_level_button.gd" id="7_1and6"]
+[ext_resource type="PackedScene" uid="uid://qrujay6bvacp" path="res://button_smah_ui.tscn" id="8_w75gc"]
+
+[sub_resource type="Gradient" id="Gradient_n0ylh"]
+colors = PackedColorArray(0.72549, 0.407843, 0.780392, 1, 0.298465, 0.0010584, 0.640336, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gbfpv"]
+gradient = SubResource("Gradient_n0ylh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x6is5"]
+texture = SubResource("GradientTexture2D_gbfpv")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne771"]
 bg_color = Color(0, 0, 0, 0.196078)
@@ -30,23 +41,17 @@ scale = Vector2(0.998621, 0.997311)
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="money_label" type="Label" parent="CanvasLayer/money_box"]
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 64
+text = "100"
+script = ExtResource("2_ne771")
+
 [node name="money_image" type="TextureRect" parent="CanvasLayer/money_box"]
 layout_mode = 2
 texture = ExtResource("1_efote")
 expand_mode = 3
-
-[node name="money_label" type="Label" parent="CanvasLayer/money_box"]
-layout_mode = 2
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 32
-text = "100"
-script = ExtResource("2_ne771")
-
-[node name="currency_label" type="Label" parent="CanvasLayer/money_box"]
-layout_mode = 2
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 32
-text = "$"
 
 [node name="time_label" type="Label" parent="CanvasLayer"]
 anchors_preset = 1
@@ -56,25 +61,41 @@ offset_left = -82.0
 offset_bottom = 45.0
 grow_horizontal = 0
 theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 64
 text = "00:00"
 script = ExtResource("1_k5de2")
 
-[node name="chaos_bar" type="ProgressBar" parent="CanvasLayer"]
+[node name="chaos_bar_fill" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.5
+offset_top = 470.0
+offset_right = 331.5
+offset_bottom = 530.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxTexture_x6is5")
+max_value = 1000.0
+step = 10.0
+script = ExtResource("3_vow1y")
+
+[node name="chaos_bar_texture" type="TextureRect" parent="CanvasLayer/chaos_bar_fill"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -300.0
-offset_top = -130.0
-offset_right = 300.0
-offset_bottom = -70.0
+offset_left = -349.5
+offset_top = -70.0
+offset_right = 333.5
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 0
-max_value = 1000.0
-value = 500.0
-script = ExtResource("3_vow1y")
+texture = ExtResource("4_gbfpv")
 
 [node name="GAMEOVERWindow" type="PanelContainer" parent="CanvasLayer"]
 visible = false
@@ -120,5 +141,12 @@ theme_override_font_sizes/font_size = 64
 text = "Exit Level
 "
 script = ExtResource("7_1and6")
+
+[node name="button_smah_UI" parent="CanvasLayer" instance=ExtResource("8_w75gc")]
+visible = false
+anchors_preset = 8
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
 
 [connection signal="visibility_changed" from="CanvasLayer/GAMEOVERWindow" to="CanvasLayer/GAMEOVERWindow/VBoxContainer/Score_label" method="_on_gameover_window_visibility_changed"]
