@@ -22,7 +22,6 @@ size = Vector2(2, 0.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00107193, 0.00770235, -0.00371265)
 
 [node name="MeshInstance3D" parent="StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = ExtResource("2_6l7nq")
 
 [node name="ProgressBarMesh" parent="." index="6"]
