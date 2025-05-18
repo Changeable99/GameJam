@@ -13,17 +13,22 @@ var isHolding : bool = false
 var goalPercentageMin : float
 var goalPercentageMax : float
 var goalPercentage : float
+var holdDurationGoalPercentage : float
 var goalHoldTimeMin : float
 var goalHoldTimeMax : float
 
 func _ready() -> void:
 	super._ready()
-	holdDurationGoal = randf_range(2.0, 5.0)
-	minigameDuration = holdDurationGoal + 2.0
-	goalPercentageMin = randf_range(0.1, 0.8)
-	goalPercentageMax = goalPercentageMin + randf_range(0.1, 0.25)
+	randomize()
+	holdDurationGoal = randf_range(1.0, 5.0)
+	holdDurationGoalPercentage = (holdDurationGoal - 1.0) / (5.0 - 1.0)
+	minigameDuration = 10.0
+	goalPercentageMin = holdDurationGoalPercentage - randf_range(0.05, 0.15)
+	goalPercentageMax = goalPercentageMin + randf_range(0.1, 0.2)
 	if goalPercentageMax > 1.0:
 		goalPercentageMax = 1.0
+	if goalPercentageMin < 0.0:
+		goalPercentage = 0.0
 	goalHoldTimeMin = goalPercentageMin * holdDurationGoal
 	goalHoldTimeMax = goalPercentageMax * holdDurationGoal
 	
@@ -36,7 +41,10 @@ func _ready() -> void:
 
 func _on_hold_tick() -> void:
 	holdTime += holdTimer.wait_time
-	#TODO: Progressbar
+	goalPercentage = holdTime / holdDurationGoal
+	print(holdTime/ holdDurationGoal)
+	
+	uiInstance.update_hold_progress(goalPercentage)
 
 func _input(event: InputEvent) -> void:
 	if minigameIsActive:
@@ -54,13 +62,13 @@ func trigger_station_minigame():
 	minigameIsActive = true
 	uiInstance = buttonHoldUI.instantiate()
 	uiInstance.holdDurationGoal = holdDurationGoal
+	uiInstance.holdDurationGoalPercentage = holdDurationGoalPercentage
+	uiInstance.minHoldDurationGoal = goalPercentageMin
+	uiInstance.maxHoldDurationGoal = goalPercentageMax
 	var canvas = get_tree().current_scene.get_node("HUD/CanvasLayer")
 	canvas.add_child(uiInstance)
 	
 func on_key_released() -> void:
-	goalPercentage = holdTime / holdDurationGoal
-	#print("min: " + str(goalHoldTimeMin) + " max: " + str(goalHoldTimeMax) + " result: " + str(holdTime))
-	
 	if goalPercentage > goalPercentageMin && goalPercentage < goalPercentageMax:
 		super.minigame_finished(true)
 	else:
