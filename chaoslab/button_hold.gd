@@ -1,6 +1,9 @@
 extends "res://station_blueprint.gd"
 
 @onready var holdTimer := Timer.new()
+@onready var buttonHoldUI = preload("res://button_hold_ui.tscn")
+
+var uiInstance
 
 var holdDurationGoal : float
 var minigameIsActive : bool = false
@@ -24,7 +27,7 @@ func _ready() -> void:
 	goalHoldTimeMin = goalPercentageMin * holdDurationGoal
 	goalHoldTimeMax = goalPercentageMax * holdDurationGoal
 	
-	print("hold duration goal: " + str(holdDurationGoal) + " secs")
+	#print("hold duration goal: " + str(holdDurationGoal) + " secs")
 	
 	add_child(holdTimer)
 	holdTimer.wait_time = 0.01
@@ -41,6 +44,7 @@ func _input(event: InputEvent) -> void:
 			if !isHolding:
 				isHolding = true
 				holdTime = 0.0
+				holdTimer.start()
 		elif event.is_action_released("Interact_F") and isHolding:
 			isHolding = false
 			on_key_released()
@@ -48,15 +52,24 @@ func _input(event: InputEvent) -> void:
 func trigger_station_minigame():
 	super.trigger_station_minigame()
 	minigameIsActive = true
-	#ui_instance = buttonSmashUI.instantiate()
-	#var canvas = get_tree().current_scene.get_node("HUD/CanvasLayer")
-	#canvas.add_child(ui_instance)
+	uiInstance = buttonHoldUI.instantiate()
+	uiInstance.holdDurationGoal = holdDurationGoal
+	var canvas = get_tree().current_scene.get_node("HUD/CanvasLayer")
+	canvas.add_child(uiInstance)
 	
 func on_key_released() -> void:
 	goalPercentage = holdTime / holdDurationGoal
-	print("min: " + str(goalHoldTimeMin) + " max: " + str(goalHoldTimeMax) + " result: " + str(holdTime))
+	#print("min: " + str(goalHoldTimeMin) + " max: " + str(goalHoldTimeMax) + " result: " + str(holdTime))
 	
 	if goalPercentage > goalPercentageMin && goalPercentage < goalPercentageMax:
 		super.minigame_finished(true)
 	else:
 		super.minigame_finished(false)
+		
+	if uiInstance:
+		uiInstance.queue_free()
+
+func _on_minigame_duration_timer_timeout() -> void:
+	super._on_minigame_duration_timer_timeout()
+	if uiInstance:
+		uiInstance.queue_free()
