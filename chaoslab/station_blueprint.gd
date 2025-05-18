@@ -83,7 +83,7 @@ func trigger_station_minigame() -> void:
 func minigame_finished(completed : bool) -> void:
 	if completed:
 		play_win_sound()
-		Global._change_chaos(-chaosChangeByFinish)
+		Global._change_chaos(-chaosChangeByFinish * 2)
 	else:
 		play_fail_sound()
 		Global._change_chaos(chaosChangeByFinish)

@@ -10,7 +10,7 @@ var spawnableCells : Array = [Vector2(-5,5), Vector2(3,5), Vector2(5,2),
 
 @export var spawnableStations : Array[PackedScene]
 @export var speedupSpawnFactor : float = 0.95
-@export var timeTillNextSpawn : float = 8
+@export var timeTillNextSpawn : float = 6
 var lastCellSpawned : Vector2 = Vector2(99, 99)
 
 func _ready() -> void:
