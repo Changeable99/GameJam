@@ -18,12 +18,15 @@ unicode = 100
 [sub_resource type="Shortcut" id="Shortcut_lg4l4"]
 events = [SubResource("InputEventKey_vpkf8")]
 
-[node name="button_smah_UI" type="Control"]
+[node name="button_smash_UI" type="Control"]
 layout_mode = 3
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_sr8y2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]

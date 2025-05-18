@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://ueeofvwy2hbr"]
+
+[ext_resource type="Script" uid="uid://cou3tjoyheegd" path="res://button_hold_ui.gd" id="1_1wndh"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_sr8y2"]
+device = -1
+keycode = 65
+unicode = 97
+
+[sub_resource type="Shortcut" id="Shortcut_n7gvr"]
+events = [SubResource("InputEventKey_sr8y2")]
+
+[node name="button_hold_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1wndh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -124.0
+offset_right = 124.0
+offset_bottom = 146.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 48
+text = "Hold \"F\" ..."
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="F" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 48
+shortcut = SubResource("Shortcut_n7gvr")
+text = " F "
