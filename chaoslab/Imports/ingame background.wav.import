@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ttr76gm0iyg0"
+path="res://.godot/imported/ingame background.wav-322c47e2a07710e76e1bd1f5bf48db58.sample"
+
+[deps]
+
+source_file="res://Imports/ingame background.wav"
+dest_files=["res://.godot/imported/ingame background.wav-322c47e2a07710e76e1bd1f5bf48db58.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

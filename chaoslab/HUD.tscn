@@ -4,11 +4,11 @@
 [ext_resource type="FontFile" uid="uid://cklntn6hls8xq" path="res://Imports/04B_09__.TTF" id="1_gbfpv"]
 [ext_resource type="Script" uid="uid://4rensbcf73ha" path="res://time_label.gd" id="1_k5de2"]
 [ext_resource type="Script" uid="uid://ld4o7mjieyao" path="res://money_label.gd" id="2_ne771"]
-[ext_resource type="Script" uid="uid://8hfab55olhwn" path="res://chaos_bar.gd" id="3_vow1y"]
+[ext_resource type="Script" path="res://chaos_bar.gd" id="3_vow1y"]
 [ext_resource type="Texture2D" uid="uid://di5vgdukxxguw" path="res://Imports/chaosBar.png" id="4_gbfpv"]
-[ext_resource type="Script" uid="uid://bpn6uwt36nomb" path="res://gameover_window.gd" id="5_gv1iq"]
-[ext_resource type="Script" uid="uid://tug0o6ngkb16" path="res://score_label.gd" id="6_1and6"]
-[ext_resource type="Script" uid="uid://bm8tp7k5bncjl" path="res://exit_level_button.gd" id="7_1and6"]
+[ext_resource type="Script" path="res://gameover_window.gd" id="5_gv1iq"]
+[ext_resource type="Script" path="res://score_label.gd" id="6_1and6"]
+[ext_resource type="Script" path="res://exit_level_button.gd" id="7_1and6"]
 [ext_resource type="PackedScene" uid="uid://qrujay6bvacp" path="res://button_smah_ui.tscn" id="8_w75gc"]
 
 [sub_resource type="Gradient" id="Gradient_n0ylh"]
@@ -44,6 +44,11 @@ offset_top = 25.0
 offset_right = 237.0
 offset_bottom = 89.0
 
+[node name="money_image" type="TextureRect" parent="CanvasLayer/money_box"]
+layout_mode = 2
+texture = ExtResource("1_efote")
+expand_mode = 3
+
 [node name="money_label" type="Label" parent="CanvasLayer/money_box"]
 layout_mode = 2
 theme_override_constants/outline_size = 6
@@ -51,11 +56,6 @@ theme_override_fonts/font = ExtResource("1_gbfpv")
 theme_override_font_sizes/font_size = 64
 text = "100"
 script = ExtResource("2_ne771")
-
-[node name="money_image" type="TextureRect" parent="CanvasLayer/money_box"]
-layout_mode = 2
-texture = ExtResource("1_efote")
-expand_mode = 3
 
 [node name="time_label" type="Label" parent="CanvasLayer"]
 anchors_preset = 1
@@ -97,13 +97,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -349.5
-offset_top = -70.0
-offset_right = 333.5
-offset_bottom = 10.0
+offset_left = -316.0
+offset_top = -110.405
+offset_right = 279.0
+offset_bottom = -50.405
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("4_gbfpv")
+theme_override_styles/fill = SubResource("StyleBoxTexture_x6is5")
+max_value = 1000.0
+step = 10.0
+show_percentage = false
+script = ExtResource("3_vow1y")
 
 [node name="GAMEOVERWindow" type="PanelContainer" parent="CanvasLayer"]
 visible = false
@@ -157,5 +161,19 @@ anchors_preset = 8
 anchor_top = 0.5
 anchor_bottom = 0.5
 grow_vertical = 2
+
+[node name="chaos_bar_texture" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -341.5
+offset_top = -120.0
+offset_right = 341.5
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_gbfpv")
 
 [connection signal="visibility_changed" from="CanvasLayer/GAMEOVERWindow" to="CanvasLayer/GAMEOVERWindow/VBoxContainer/Score_label" method="_on_gameover_window_visibility_changed"]

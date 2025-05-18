@@ -6,7 +6,6 @@ var lastKey := ""          # Damit A und D abwechselnd gedrückt werden müssen
 var minigameIsActive : bool = false
 
 @onready var buttonSmashUI = preload("res://button_smah_ui.tscn")
-
 var ui_instance
 
 func trigger_station_minigame():
@@ -35,7 +34,9 @@ func _input(event):
 	if progress >= targetProgress:
 		ui_instance.queue_free()
 		super.minigame_finished(true)
-#wenn aktiv, dann player movment stoppen
-#das es endet wenn ziel erreicht
-#wenn ziel erreicht, bar füllen/ui dies das
-#ich höre auf "E" von Player, dann start von minispiel
+
+func _on_minigame_duration_timer_timeout() -> void:
+	super._on_minigame_duration_timer_timeout()
+	if ui_instance:
+		ui_instance.queue_free()
+		
