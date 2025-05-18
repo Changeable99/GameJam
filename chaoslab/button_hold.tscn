@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://vll4uqi2lfeo"]
+
+[ext_resource type="PackedScene" uid="uid://ck0wrrdx4m4a2" path="res://station_blueprint.tscn" id="1_pcp24"]
+[ext_resource type="Script" uid="uid://metogx3mc7qn" path="res://button_hold.gd" id="2_2vyj8"]
+[ext_resource type="ArrayMesh" uid="uid://bf3fjg2n81gmy" path="res://Imports/TeslaCoil_Cylinder_002.res" id="2_xh6u3"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xh6u3"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2vyj8"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_xh6u3")
+
+[sub_resource type="QuadMesh" id="QuadMesh_3wb8r"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_2vyj8")
+size = Vector2(2, 0.5)
+
+[node name="ButtonHold" instance=ExtResource("1_pcp24")]
+script = ExtResource("2_2vyj8")
+
+[node name="MeshInstance3D" parent="StaticBody3D" index="0"]
+mesh = ExtResource("2_xh6u3")
+
+[node name="ProgressBarMesh" parent="." index="6"]
+mesh = SubResource("QuadMesh_3wb8r")

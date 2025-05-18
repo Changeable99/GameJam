@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://cwwjqpbhoy278"]
 
+[ext_resource type="PackedScene" uid="uid://vll4uqi2lfeo" path="res://button_hold.tscn" id="1_272bh"]
 [ext_resource type="PackedScene" uid="uid://d2xpqhe1522tx" path="res://beginner_level.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bkddv5iicpqk" path="res://player_character.tscn" id="2_0xm2m"]
 [ext_resource type="AudioStream" uid="uid://cs0fmjbea013o" path="res://Imports/ingame-background.mp3" id="5_7mycd"]
-[ext_resource type="PackedScene" uid="uid://b650ls2anb7gj" path="res://button_smash.tscn" id="5_272bh"]
 [ext_resource type="PackedScene" uid="uid://b3mv35n6fubay" path="res://HUD.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dynfwpwgxcl0g" path="res://Imports/defaultWall.glb" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://dyq0vytanyk55" path="res://Imports/frame.glb" id="7_272bh"]
@@ -37,6 +37,9 @@ fog_density = 1.0
 [node name="Main" type="Node3D"]
 script = SubResource("GDScript_1bvp3")
 
+[node name="StationBlueprint" parent="." instance=ExtResource("1_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664628, 3.22256)
+
 [node name="BeginnerLevel" parent="." instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0293499, 0, -0.00357306)
 
@@ -61,9 +64,6 @@ omni_range = 20.2277
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_7mycd")
 autoplay = true
-
-[node name="StationBlueprint" parent="." instance=ExtResource("5_272bh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.76611, 0.500403, 2.56979)
 
 [node name="frame" parent="." instance=ExtResource("7_272bh")]
 
