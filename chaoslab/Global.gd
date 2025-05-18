@@ -5,7 +5,7 @@ var startChaos: int = 500
 var startTime = 0
 
 var currentMoney: int
-var moneyFactor = 0.5
+var moneyFactor = 0.25
 var currentChaos: int
 var currentTime = 0
 var displayTime: String

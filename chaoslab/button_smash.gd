@@ -1,12 +1,16 @@
 extends "res://station_blueprint.gd"
 
 var progress := 0
-var targetProgress := 40   # Wie oft muss gedrückt werden?
+var targetProgress := 25   # Wie oft muss gedrückt werden?
 var lastKey := ""          # Damit A und D abwechselnd gedrückt werden müssen
 var minigameIsActive : bool = false
 
 @onready var buttonSmashUI = preload("res://button_smah_ui.tscn")
 var ui_instance
+
+func _ready() -> void:
+	super._ready()
+	minigameDuration = 4
 
 func trigger_station_minigame():
 	super.trigger_station_minigame()

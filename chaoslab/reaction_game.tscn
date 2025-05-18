@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://0ypwojm1karh"]
+[gd_scene load_steps=7 format=3 uid="uid://0ypwojm1karh"]
 
 [ext_resource type="PackedScene" uid="uid://ck0wrrdx4m4a2" path="res://station_blueprint.tscn" id="1_c3a7i"]
 [ext_resource type="ArrayMesh" uid="uid://bvlmxpjuex5c1" path="res://Imports/UFO_Sphere_006.res" id="2_6l7nq"]
+[ext_resource type="Script" uid="uid://vodf70emwk4" path="res://reaction_game.gd" id="2_vjxft"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6l7nq"]
 viewport_path = NodePath("SubViewport")
@@ -17,6 +18,7 @@ material = SubResource("StandardMaterial3D_vjxft")
 size = Vector2(2, 0.5)
 
 [node name="ReactionGame" instance=ExtResource("1_c3a7i")]
+script = ExtResource("2_vjxft")
 
 [node name="StaticBody3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00107193, 0.00770235, -0.00371265)
