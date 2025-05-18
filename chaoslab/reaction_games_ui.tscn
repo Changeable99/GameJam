@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://cprtk8p7ctqnw"]
+
+[ext_resource type="Script" uid="uid://drpd0hbd4xx55" path="res://reaction_games_ui.gd" id="1_qlvjg"]
+
+[node name="reaction_games_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qlvjg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -47.5
+offset_right = 175.0
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 48
+text = "PRESS IN ORDER"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Key_1" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 48
+text = " W "
+
+[node name="Key_2" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 48
+text = " A "
+
+[node name="Key_3" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 48
+text = " S "
+
+[node name="Key_4" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 48
+text = " D "

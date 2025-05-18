@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwwjqpbhoy278"]
+[gd_scene load_steps=11 format=3 uid="uid://cwwjqpbhoy278"]
 
 [ext_resource type="PackedScene" uid="uid://vll4uqi2lfeo" path="res://button_hold.tscn" id="1_272bh"]
 [ext_resource type="PackedScene" uid="uid://d2xpqhe1522tx" path="res://beginner_level.tscn" id="1_ig7tw"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b3mv35n6fubay" path="res://HUD.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dynfwpwgxcl0g" path="res://Imports/defaultWall.glb" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://dyq0vytanyk55" path="res://Imports/frame.glb" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://0ypwojm1karh" path="res://reaction_game.tscn" id="8_5vw27"]
 
 [sub_resource type="GDScript" id="GDScript_1bvp3"]
 script/source = "extends Node3D
@@ -131,5 +132,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, -12)
 
 [node name="defaultWall21" parent="Environment" instance=ExtResource("6_7mycd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -12)
+
+[node name="ReactionGame" parent="." instance=ExtResource("8_5vw27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8376, 0.491736, 0.984637)
 
 [connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]
