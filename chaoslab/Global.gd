@@ -31,9 +31,8 @@ func _process(delta: float) -> void:
 		_calculate_income()
 	
 func _change_chaos(chaos: int) -> void:
-	print("currentChaos += " + str(chaos))
 	currentChaos += chaos
-	print("Chaos changed by: " + str(chaos))
+	#print("Chaos changed by: " + str(chaos))
 	
 func _change_money(money: int) -> void:
 	currentMoney += money
@@ -48,12 +47,15 @@ func _calculate_time(delta) -> void:
 	displayTime = "%02d:%02d" % [minutes, seconds]
 	
 func _end_game():
-	print("GAME OVER")
+	var gameOverWindow = get_tree().current_scene.get_node("HUD/CanvasLayer/GAMEOVERWindow")
+	gameOverWindow.show()
+	get_tree().paused = true
+	game_started = false
 	
 func _calculate_income() -> void :
-	var max_chaos = 500
+	var maxChaos = 500
 	var income = 0
-	var distance = abs(currentChaos - max_chaos) 
+	var distance = abs(currentChaos - maxChaos) 
 	
 	if currentChaos >= 300 and currentChaos <= 600:
 		income = (100 - (distance)) * moneyFactor

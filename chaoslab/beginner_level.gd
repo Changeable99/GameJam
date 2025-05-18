@@ -3,7 +3,7 @@ extends Node3D
 @onready var gridMap : GridMap = $GridMap
 @onready var newStationSpawnTimer : Timer = $NewStationSpawnTimer
 
-var spawnableCells : Array = [Vector2(-5,-5), Vector2(3,5), Vector2(5,2), 
+var spawnableCells : Array = [Vector2(-5,5), Vector2(3,5), Vector2(5,2), 
 							  Vector2(5,0), Vector2(5,-3), Vector2(4,-6), 
 							  Vector2(1,-6), Vector2(-1,-6), Vector2(-6,-4), 
 							  Vector2(-6,-1), Vector2(-4,0), Vector2(-1,0)]
@@ -11,6 +11,7 @@ var spawnableCells : Array = [Vector2(-5,-5), Vector2(3,5), Vector2(5,2),
 @export var spawnableStations : Array[PackedScene]
 @export var speedupSpawnFactor : float = 0.95
 @export var timeTillNextSpawn : float = 10
+var lastCellSpawned : Vector2 = Vector2(99, 99)
 
 func _ready() -> void:
 	newStationSpawnTimer.wait_time = timeTillNextSpawn
@@ -44,7 +45,13 @@ func _on_new_station_timer_timeout() -> void:
 	newStationSpawnTimer.start()
 	
 	# pick random cell, random station and spawn it
-	var randomCell : Vector2 = spawnableCells[randi() % spawnableCells.size()]
+	var viableRandomCellFound : bool = false
+	var randomCell : Vector2
+	while !viableRandomCellFound:
+		randomCell = spawnableCells[randi() % spawnableCells.size()]
+		if randomCell != lastCellSpawned:
+			lastCellSpawned = randomCell
+			viableRandomCellFound = true
 	#print("randomCell: " + str(randomCell))
 	var worldPosRandomCell = gridMap.map_to_local(Vector3i(randomCell.x, 1, randomCell.y,))
 	#print("worldPosRandomCell: " + str(worldPosRandomCell))

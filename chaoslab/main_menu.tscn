@@ -1,7 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://6y7ac7hf71xw"]
+[gd_scene load_steps=4 format=3 uid="uid://6y7ac7hf71xw"]
 
 [ext_resource type="PackedScene" uid="uid://b8bsp0avpyw5k" path="res://MainMenu_UI.tscn" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://w48k5hntw1i1" path="res://main_menu.gd" id="1_fu7sn"]
+[ext_resource type="AudioStream" uid="uid://b0spwn2meb6s5" path="res://Imports/titlescreen-background.mp3" id="3_jix8l"]
 
 [node name="MainMenu" type="Node3D"]
+script = ExtResource("1_fu7sn")
 
 [node name="Control" parent="." instance=ExtResource("1_06t4h")]
+
+[node name="TitlescreenMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jix8l")
+autoplay = true
