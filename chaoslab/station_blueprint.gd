@@ -87,9 +87,6 @@ func minigame_finished(completed : bool) -> void:
 	else:
 		play_fail_sound()
 		Global._change_chaos(chaosChangeByFinish)
-		
-
-	
 	Global.gameState = Global.GameState.DEFAULT
 	queue_free()
 
@@ -105,6 +102,7 @@ func play_fail_sound():
 	sound.stream = preload("res://Imports/fail.mp3")
 	get_tree().get_current_scene().add_child(sound)
 	sound.play()
+	sound.volume_db = -5
 	sound.finished.connect(sound.queue_free)
 
 func _on_chaos_tick_timer_timeout() -> void:

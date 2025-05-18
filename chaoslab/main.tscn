@@ -32,14 +32,13 @@ fog_enabled = true
 fog_mode = 1
 fog_density = 1.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_272bh"]
-size = Vector3(3.09082, 1.71631, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
+size = Vector3(2.97418, 1, 1)
 
 [node name="Main" type="Node3D"]
 script = SubResource("GDScript_1bvp3")
 
 [node name="BeginnerLevel" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0293499, 0, -0.00357306)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.53181, 1.01575, -0.76964)
@@ -129,9 +128,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, -12)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -12)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51, 5.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.490656, 0.358154, 5.5)
-shape = SubResource("BoxShape3D_272bh")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.497711, 0, 0)
+shape = SubResource("BoxShape3D_lquwl")
 
 [connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]
