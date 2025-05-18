@@ -10,6 +10,8 @@ var currentChaos: int
 var currentTime = 0
 var displayTime: String
 var gameState: GameState = GameState.DEFAULT
+var scoreTime
+var highScore
 
 var game_started = false
 
@@ -47,6 +49,13 @@ func _calculate_time(delta) -> void:
 	displayTime = "%02d:%02d" % [minutes, seconds]
 	
 func _end_game():
+	scoreTime = currentTime
+	
+	if highScore:
+		if scoreTime >  highScore:
+			highScore = scoreTime
+	else: highScore = scoreTime
+	
 	var gameOverWindow = get_tree().current_scene.get_node("HUD/CanvasLayer/GAMEOVERWindow")
 	gameOverWindow.show()
 	get_tree().paused = true
