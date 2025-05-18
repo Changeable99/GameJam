@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=3 uid="uid://b3mv35n6fubay"]
 
 [ext_resource type="Texture2D" uid="uid://c7l7y4io18k3u" path="res://Imports/dogecoin_placeholder.png" id="1_efote"]
-[ext_resource type="Script" uid="uid://4rensbcf73ha" path="res://time_label.gd" id="1_k5de2"]
+[ext_resource type="Script" path="res://time_label.gd" id="1_k5de2"]
 [ext_resource type="Script" uid="uid://ld4o7mjieyao" path="res://money_label.gd" id="2_ne771"]
-[ext_resource type="Script" uid="uid://8hfab55olhwn" path="res://chaos_bar.gd" id="3_vow1y"]
+[ext_resource type="Script" path="res://chaos_bar.gd" id="3_vow1y"]
 [ext_resource type="Texture2D" uid="uid://di5vgdukxxguw" path="res://Imports/chaosBar.png" id="4_gbfpv"]
-[ext_resource type="Script" uid="uid://bpn6uwt36nomb" path="res://gameover_window.gd" id="5_gv1iq"]
-[ext_resource type="Script" uid="uid://tug0o6ngkb16" path="res://score_label.gd" id="6_1and6"]
-[ext_resource type="Script" uid="uid://bm8tp7k5bncjl" path="res://exit_level_button.gd" id="7_1and6"]
+[ext_resource type="Script" path="res://gameover_window.gd" id="5_gv1iq"]
+[ext_resource type="Script" path="res://score_label.gd" id="6_1and6"]
+[ext_resource type="Script" path="res://exit_level_button.gd" id="7_1and6"]
 [ext_resource type="PackedScene" uid="uid://qrujay6bvacp" path="res://button_smah_ui.tscn" id="8_w75gc"]
 
 [sub_resource type="Gradient" id="Gradient_n0ylh"]
